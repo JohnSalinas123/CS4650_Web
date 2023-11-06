@@ -1,6 +1,6 @@
 
 export const getUserMealPlans = async(req, res) => {
     // TODO
-    
-    console.log("Meal Plans")
+
+    res.send({"potato meal" : 5})
 }
