@@ -20,7 +20,7 @@ export const Navigation = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto nav-font-size">
-                        <LinkContainer to='/grocerlist'>
+                        <LinkContainer to='/grocery'>
                             <Nav.Link className="nav-link-custom">GroceryList</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to='/recipes'>
