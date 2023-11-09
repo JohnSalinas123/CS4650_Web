@@ -4,12 +4,13 @@ import cors from 'cors'
 import userRoutes from './routes/userRoutes.js';
 import ingredientRoutes from './routes/ingredientRoutes.js';
 import recipeRoutes from './routes/recipeRoutes.js';
+import {dbConnect} from './dbConnect.js'
 
 const app = express()
 const port = 8080;
 
 // connect to mongodb atlas
-//dbConnect();
+dbConnect();
 
 app.use(cors())
 app.use(express.json());
