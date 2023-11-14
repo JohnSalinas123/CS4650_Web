@@ -1,4 +1,4 @@
-
+import { RecipesList } from "../components/RecipesList";
 
 export const Recipes = () => {
 	return (
