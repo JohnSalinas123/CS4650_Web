@@ -20,7 +20,7 @@ export function App() {
 				<Route path='/grocery' element={<Grocery />}></Route>
 				<Route path='/ingredients' element={<Ingredients />}></Route>
 				<Route path='/recipes' element={<Recipes />}></Route>
-				<Route path='/mealplans' element={<MealPlans />}></Route>
+				<Route path='/meals' element={<MealPlans />}></Route>
 
 			</Routes>
 		</div>

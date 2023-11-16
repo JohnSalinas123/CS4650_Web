@@ -1,9 +1,9 @@
-
+import { MealPlansList } from "../components/MealPlansList"
 
 export const MealPlans = () => {
 	return (
 		<div>
-			Meal Plan Page
+			<MealPlansList />
 		</div>
 	);
 };

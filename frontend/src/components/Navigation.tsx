@@ -29,7 +29,7 @@ export const Navigation = () => {
                         <LinkContainer to='/ingredients'>
                             <Nav.Link className="nav-link-custom">Ingredients</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to='/mealplans'>
+                        <LinkContainer to='/meals'>
                             <Nav.Link className="nav-link-custom">Meal Plans</Nav.Link>
                         </LinkContainer>
 
