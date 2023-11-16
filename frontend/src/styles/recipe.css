@@ -1,0 +1,34 @@
+
+.recipe-item-container {
+    margin-bottom: 20px;
+}
+
+
+.scrollbar {
+    overflow: scroll;
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+/* Recipe Scrollbar */
+
+.scrollbar-recipe-container {
+    height: 700px;
+}
+
+.scrollbar-colored::-webkit-scrollbar {
+    background-color: #F5F5F5;
+}
+
+.scrollbar-colored {
+    scrollbar-color : #FADF63 #F5F5F5
+}
+
+.scrollbar-colored::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+    background-color: #FADF63
+}

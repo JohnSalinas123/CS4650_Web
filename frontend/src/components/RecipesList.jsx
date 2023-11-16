@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react'
 import axios from 'axios';
+import { RecipeListItem } from './RecipeListItem';
 
 axios.defaults.baseURL = 'http://localhost:8080';
 
@@ -25,7 +26,6 @@ const ingredientsToString = (ingredient_list) => {
 }
 
 
-
 export const RecipesList = () => {
 	const [recipes, setRecipes] = useState([])
 
@@ -38,6 +38,7 @@ export const RecipesList = () => {
 		try {
 			const { data } = await axios.get('api/recipes');
 			data.forEach((recipe) => {
+				console.log(recipe)
 				// for loop inserts each recipe into array
 				setRecipes((prevRecipe) => [...prevRecipe, recipe]); // add new recipe to end of array
 			});
@@ -50,36 +51,14 @@ export const RecipesList = () => {
 	return (
 		<div className='container'>
 			<h3 className='p-3 text-center'>Recipe List</h3>
-			<table className='table table-striped table-bordered'>
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Description</th>
-						<th>Vegetarian</th>
-						<th>Ingredients</th>
-					</tr>
-					
-				</thead>
+				<div className="scrollbar scrollbar-colored scrollbar-recipe-container mt-5 mx-auto">
 					{recipes &&
 						recipes.map((recipe) => (
-							<tbody key={recipe._id}>
-
-								<tr >
-									<td>{recipe.name}</td>
-									<td>{recipe.description}</td>
-									<td>{recipe.vegetarian ? "Yes" : "No"}</td>
-									<td>{ingredientsToString(recipe.ingredients)}</td>
-								</tr>
-								<tr >
-									{recipe.steps.map((step) => (
-										<div key={step.step_num}>
-											{`${step.step_num}. ${step.instruction}`}
-										</div>
-									))}
-								</tr>
-							</tbody>
+							 <RecipeListItem key={recipe._id} 
+							 	id={recipe._id} name={recipe.name} description={recipe.description} 
+									ingredients={recipe.ingredients} steps={recipe.steps}/>
 						))}
-			</table>
+				</div>
 		</div>
 	);
 };
