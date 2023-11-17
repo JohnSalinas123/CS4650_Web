@@ -3,7 +3,8 @@ export let testRecipe =
     {
         "_id" : 1,
         "name": "Burger",
-        "description" : "This is a burger recipe",
+        "description" : "This is classic Americal cheeseburger Recipe, that is made with minimal ingredients. It includes three ingredients, a beef patty, cheddar cheese, and lettuce.",
+        "calories" : 500,
         "vegetarian" : false,
         "ingredients": [
             {
@@ -34,6 +35,7 @@ export let testRecipe =
         "_id" : 2,
         "name": "Pizza",
         "description" : "This is a pizza recipe",
+        "calories" : 1500,
         "ingredients": [
             {
                 "name": "Pizza Dough",
@@ -75,6 +77,7 @@ export let testRecipe =
         "_id" : 3,
         "name": "Pizza",
         "description" : "This is a pizza recipe",
+        "calories" : 1500,
         "ingredients": [
             {
                 "name": "Pizza Dough",
@@ -116,6 +119,7 @@ export let testRecipe =
         "_id" : 4,
         "name": "Pizza",
         "description" : "This is a pizza recipe",
+        "calories" : 1500,
         "ingredients": [
             {
                 "name": "Pizza Dough",
@@ -157,6 +161,7 @@ export let testRecipe =
         "_id" : 5,
         "name": "Pizza",
         "description" : "This is a pizza recipe",
+        "calories" : 1500,
         "ingredients": [
             {
                 "name": "Pizza Dough",
@@ -198,6 +203,7 @@ export let testRecipe =
         "_id" : 6,
         "name": "Pizza",
         "description" : "This is a pizza recipe",
+        "calories" : 1500,
         "ingredients": [
             {
                 "name": "Pizza Dough",
@@ -239,6 +245,7 @@ export let testRecipe =
         "_id" : 7,
         "name": "Pizza",
         "description" : "This is a pizza recipe",
+        "calories" : 1500,
         "ingredients": [
             {
                 "name": "Pizza Dough",
