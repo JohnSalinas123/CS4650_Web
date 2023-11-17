@@ -35,6 +35,13 @@ body {
 	height: 100%;
 }
 
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+  }
+
 /* NAVBAR STYLES */
 
 .navbar-brand {
@@ -53,7 +60,8 @@ body {
 }
 
 #navElement {
-	border-color: var(--seal-brown) !important;
+	border-color: var(--seal-brown
+	) !important;
 	background-color: var(--carrot_orange) !important;
 }
 

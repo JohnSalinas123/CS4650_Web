@@ -1,8 +1,15 @@
 
-.recipe-item-container {
-    margin-bottom: 20px;
-}
 
+:root {
+	--carrot_orange: #F49D37;
+	--lavender_blush: #E0D8DE;
+	--emerald: #06D6A0;
+	--olivine: #A1C181;
+	--van-dyke: #523F38;
+	--tangerine: #E9820C;
+	--tigers-eye: #AE6109;
+	--seal-brown: #4E2B04;
+}
 
 .scrollbar {
     overflow: scroll;
@@ -31,4 +38,33 @@
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
     background-color: #FADF63
+}
+
+/* Recipe Cards */
+
+.recipe-item-container {
+    margin-bottom: 20px;
+    width: 250px !important;
+    height: 400px !important;
+    border-color: var(--seal-brown) !important;
+    border-width: 3px !important;
+}
+
+.recipe-item-container:hover {
+    height: 110%;
+    width: 110%;
+}
+
+.recipe-body {
+    background-color: var(--emerald) !important;
+}
+
+.recipe-image {
+    max-height: 80%;
+    max-width: 80%;
+}
+
+.recipe-descrip {
+    overflow: hidden;
+    height: 90px !important;
 }
