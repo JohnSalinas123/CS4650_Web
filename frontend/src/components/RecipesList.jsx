@@ -60,7 +60,7 @@ export const RecipesList = () => {
 
 	return (
 		<div className='container'>
-			<h3 className='p-3 text-center'>Recipe List</h3>
+			<h2 className='p-3 text-center'>Recipe List</h2>
 				<div className='recipe-list-container'>
 					<Pagination className='recipe-pagination'>
 						{Array.from({ length: Math.ceil(recipes.length / recipesPerPage) }).map((_, index) => (

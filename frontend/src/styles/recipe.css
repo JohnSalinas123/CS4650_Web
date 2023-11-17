@@ -1,5 +1,3 @@
-
-
 :root {
 	--carrot_orange: #F49D37;
 	--lavender_blush: #E0D8DE;
@@ -18,8 +16,6 @@
 
 /* Recipe Scrollbar */
 
-
-
 .scrollbar-colored::-webkit-scrollbar {
     background-color: #F5F5F5;
 }
@@ -35,8 +31,6 @@
 }
 
 /* Recipe Cards */
-
-
 .pagination .page-item .page-link {
     border-color: var(--seal_brown);
     color: black
@@ -51,8 +45,6 @@
 .recipe-pagination {
     justify-content: center;
 }
-
-
 
 .recipe-item-container {
     margin-bottom: 20px;
@@ -72,5 +64,10 @@
 
 .recipe-descrip {
     height: 90px !important;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.recipe-descrip::-webkit-scrollbar {
+    display: none;
 }
