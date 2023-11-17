@@ -2,8 +2,8 @@ import React from 'react';
 import {useState, useEffect} from 'react'
 import axios from 'axios';
 import { RecipeListItem } from './RecipeListItem';
-import { Row } from "react-bootstrap/Row";
-import { Col } from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col"
 
 axios.defaults.baseURL = 'http://localhost:8080';
 
@@ -60,7 +60,7 @@ export const RecipesList = () => {
 
 							 <RecipeListItem key={recipe._id} 
 							 	id={recipe._id} name={recipe.name} description={recipe.description} 
-									ingredients={recipe.ingredients} steps={recipe.steps} cal={recipe.calories}/>
+									ingredients={ingredientsToString(recipe.ingredients)} steps={recipe.steps} cal={recipe.calories}/>
 						))}
 					</Row>
 					

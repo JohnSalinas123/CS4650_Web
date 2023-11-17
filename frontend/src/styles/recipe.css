@@ -22,9 +22,6 @@
 
 /* Recipe Scrollbar */
 
-.scrollbar-recipe-container {
-    height: 700px;
-}
 
 .scrollbar-colored::-webkit-scrollbar {
     background-color: #F5F5F5;
@@ -44,15 +41,9 @@
 
 .recipe-item-container {
     margin-bottom: 20px;
-    width: 250px !important;
-    height: 400px !important;
+    margin-left: 12px;
     border-color: var(--seal-brown) !important;
     border-width: 3px !important;
-}
-
-.recipe-item-container:hover {
-    height: 110%;
-    width: 110%;
 }
 
 .recipe-body {
@@ -60,11 +51,11 @@
 }
 
 .recipe-image {
-    max-height: 80%;
-    max-width: 80%;
+    max-height: 70%;
+    max-width: 70%;
 }
 
 .recipe-descrip {
-    overflow: hidden;
     height: 90px !important;
+    overflow: hidden;
 }
