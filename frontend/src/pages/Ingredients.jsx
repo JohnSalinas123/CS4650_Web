@@ -3,7 +3,7 @@
 export const Ingredients = () => {
 	return (
 		<div>
-			Ingredients Page
+			<h1>Ingredients List</h1>
 		</div>
 	);
 };
