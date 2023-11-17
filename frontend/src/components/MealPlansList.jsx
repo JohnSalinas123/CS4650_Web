@@ -1,6 +1,9 @@
 import React from 'react';
 import {useState, useEffect} from 'react'
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import {Card, CardGroup} from 'react-bootstrap';
+import img1 from '../resources/pizza.jpg'; 
 
 axios.defaults.baseURL = 'http://localhost:8080';
 
@@ -24,22 +27,28 @@ export const MealPlansList = () => {
 			console.error(err);
 		}
 	};
-
+	
 	return (
-        <div className='container'>
-            {meals.map((mealCat) =>(
-				<div key={mealCat._id}>
-					<h2>{mealCat.userID}'s Meal Plan</h2>
-					<ul>
-						{mealCat.meals.map((meal) => (
-							<li key={meal.Date}>
-								<span>{meal.Date}:{meal.Meal}</span>
-							</li>
-						))}
-					</ul>
-				</div>
+		<div className='container'>
+			{meals.map((mealCat) =>(
+					<div key={mealCat._id}>
+						<h2>{mealCat.userID}'s Meal Plan</h2>
+						<CardGroup>
+
+							{mealCat.meals.map((meal) => (
+								<Card key={meal.Date}>
+									<Card.Body>
+										<Card.Title>{meal.Date}</Card.Title>
+										<Card.Text>
+											{meal.Meal}
+										</Card.Text>
+									</Card.Body>
+								</Card>
+							))}
+							
+						</CardGroup>
+					</div>
 			))}
-        </div>
-		
+		</div>
 	);
 };
