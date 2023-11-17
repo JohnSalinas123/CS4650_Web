@@ -11,7 +11,7 @@ export const Navigation = () => {
     return (
         
         
-        <Navbar bg="light" expand="lg" id="navElement" className="border-bottom border-2">
+        <Navbar bg="light" expand="lg" id="navElement" className="border-bottom border-2 fixed-top">
             <Container >
                 <LinkContainer to='/' >
                     <Navbar.Brand href="#home" className="brand-font-size">PantryPal</Navbar.Brand>

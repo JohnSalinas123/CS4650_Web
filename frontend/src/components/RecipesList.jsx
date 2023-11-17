@@ -4,6 +4,7 @@ import axios from 'axios';
 import { RecipeListItem } from './RecipeListItem';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col"
+import Pagination from 'react-bootstrap/Pagination'
 
 axios.defaults.baseURL = 'http://localhost:8080';
 
@@ -30,9 +31,11 @@ const ingredientsToString = (ingredient_list) => {
 
 export const RecipesList = () => {
 	const [recipes, setRecipes] = useState([])
+	const [currentPage, setCurrentPage] = useState(1)
+	const recipesPerPage = 8;
 
 	useEffect(() => {
-		// function is called after rendering map
+		// function is called after rendering
 		getData();
 	}, []); // end useEffect
 
@@ -40,7 +43,6 @@ export const RecipesList = () => {
 		try {
 			const { data } = await axios.get('api/recipes');
 			data.forEach((recipe) => {
-				console.log(recipe)
 				// for loop inserts each recipe into array
 				setRecipes((prevRecipe) => [...prevRecipe, recipe]); // add new recipe to end of array
 			});
@@ -50,20 +52,35 @@ export const RecipesList = () => {
 		}
 	};
 
+	let indexOfLastRecipe = currentPage*recipesPerPage;
+	let indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage
+	let currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe)
+
+	let paginate = (pageNum) => setCurrentPage(pageNum)
+
 	return (
 		<div className='container'>
 			<h3 className='p-3 text-center'>Recipe List</h3>
-				<div className="scrollbar scrollbar-colored scrollbar-recipe-container mt-5 mx-auto">
-					<Row>
-						{recipes &&
-						recipes.map((recipe) => (
-
-							 <RecipeListItem key={recipe._id} 
-							 	id={recipe._id} name={recipe.name} description={recipe.description} 
-									ingredients={ingredientsToString(recipe.ingredients)} steps={recipe.steps} cal={recipe.calories}/>
+				<div className='recipe-list-container'>
+					<Pagination className='recipe-pagination'>
+						{Array.from({ length: Math.ceil(recipes.length / recipesPerPage) }).map((_, index) => (
+						<Pagination.Item
+						key={index + 1}
+						active={index + 1 === currentPage}
+						onClick={() => paginate(index + 1)}
+						>
+						{index + 1}
+						</Pagination.Item>
 						))}
+					</Pagination>
+					<Row>
+						{currentRecipes &&
+							currentRecipes.map((recipe) => (
+								<RecipeListItem key={recipe._id} 
+									id={recipe._id} name={recipe.name} description={recipe.description} 
+										ingredients={ingredientsToString(recipe.ingredients)} steps={recipe.steps} cal={recipe.calories}/>
+							))}
 					</Row>
-					
 				</div>
 		</div>
 	);

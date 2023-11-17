@@ -5,14 +5,10 @@
 	--lavender_blush: #E0D8DE;
 	--emerald: #06D6A0;
 	--olivine: #A1C181;
-	--van-dyke: #523F38;
+	--van_dyke: #523F38;
 	--tangerine: #E9820C;
-	--tigers-eye: #AE6109;
-	--seal-brown: #4E2B04;
-}
-
-.scrollbar {
-    overflow: scroll;
+	--tigers_eye: #AE6109;
+	--seal_brown: #4E2B04;
 }
 
 .scrollbar::-webkit-scrollbar {
@@ -21,6 +17,7 @@
 }
 
 /* Recipe Scrollbar */
+
 
 
 .scrollbar-colored::-webkit-scrollbar {
@@ -39,11 +36,29 @@
 
 /* Recipe Cards */
 
+
+.pagination .page-item .page-link {
+    border-color: var(--seal_brown);
+    color: black
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--olivine);
+    border-color: var(--seal_brown);
+    color: white
+}
+
+.recipe-pagination {
+    justify-content: center;
+}
+
+
+
 .recipe-item-container {
     margin-bottom: 20px;
-    margin-left: 12px;
     border-color: var(--seal-brown) !important;
     border-width: 3px !important;
+    
 }
 
 .recipe-body {

@@ -12,6 +12,11 @@ body {
 	margin: 0;
 	height: 100%;
 	width: 100%;
+	margin-top: 67px;
+}
+
+body::-webkit-scrollbar {
+	display: none;
 }
 
 :root {
@@ -42,6 +47,8 @@ body {
 	width: 50%;
   }
 
+
+
 /* NAVBAR STYLES */
 
 .navbar-brand {
@@ -52,8 +59,6 @@ body {
 .nav-font-size {
 	font-size: 23px;
 }
-
-
 
 .nav-link-custom:active {
 	font-weight: normal;
