@@ -24,10 +24,13 @@ body::-webkit-scrollbar {
 	--lavender_blush: #E0D8DE;
 	--emerald: #06D6A0;
 	--olivine: #A1C181;
-	--van-dyke: #523F38;
+	--van_dyke: #523F38;
 	--tangerine: #E9820C;
-	--tigers-eye: #AE6109;
-	--seal-brown: #4E2B04;
+	--tigers_eye: #AE6109;
+	--seal_brown: #4E2B04;
+    --orange_web: #F4A615;
+    --xanthous: #F8C463;
+    --orange_pantone: #F66213;
 }
 
 #root {
@@ -65,9 +68,8 @@ body::-webkit-scrollbar {
 }
 
 #navElement {
-	border-color: var(--seal-brown
-	) !important;
-	background-color: var(--carrot_orange) !important;
+	border-color: black !important;
+	background-color: var(--orange_pantone) !important;
 }
 
 #addEventIcon {

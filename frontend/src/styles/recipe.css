@@ -7,6 +7,9 @@
 	--tangerine: #E9820C;
 	--tigers_eye: #AE6109;
 	--seal_brown: #4E2B04;
+    --orange_web: #F4A615;
+    --xanthous: #F8C463;
+    --orange_pantone: #F66213;
 }
 
 .scrollbar::-webkit-scrollbar {
@@ -37,8 +40,8 @@
 }
 
 .pagination .page-item.active .page-link {
-    background-color: var(--olivine);
-    border-color: var(--seal_brown);
+    background-color: var(--emerald);
+    border-color: black;
     color: white
 }
 
@@ -48,13 +51,13 @@
 
 .recipe-item-container {
     margin-bottom: 20px;
-    border-color: var(--seal-brown) !important;
+    border-color: black !important;
     border-width: 3px !important;
     
 }
 
 .recipe-body {
-    background-color: var(--emerald) !important;
+    background-color: var(--xanthous) !important;
 }
 
 .recipe-image {
