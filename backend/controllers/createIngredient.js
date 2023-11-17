@@ -72,9 +72,9 @@ export const createIngredients = async(req, res) => {
 
 	res.status(201).json({
 		"_id" : id,
-        "name" : name,
-        "category" : category,
-        "calories" : calories
+        	"name" : name,
+        	"category" : category,
+        	"calories" : calories
 	});
 
 };
