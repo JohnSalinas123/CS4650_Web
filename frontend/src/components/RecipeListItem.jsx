@@ -25,22 +25,3 @@ export const RecipeListItem = (props) => {
     )
 }
 
-const ingredientsToString = (ingredient_list) => {
-
-	console.log(ingredient_list)
-
-	let ingredient_array = []
-	for (let i in ingredient_list) {
-		ingredient_array.push(ingredient_list[i].name)
-
-	}
-
-	console.log(ingredient_array)
-
-	return (
-		<div>
-			{ingredient_array.join(", ")}
-		</div>
-	)
-
-}
