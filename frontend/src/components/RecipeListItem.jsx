@@ -1,29 +1,25 @@
 import Accordion from 'react-bootstrap/Accordion'
+import Card from 'react-bootstrap/Card'
 import "../styles/recipe.css"
+import "../styles/general.css"
+import RecipeImage from "../resources/recipe_pixel_art.jpg"
 
 export const RecipeListItem = (props) => {
 
     console.log(props.id)
 
     return (
-      <Accordion defaultActiveKey={null} className="recipe-item-container">
-        <Accordion.Item eventKey={props._id}>
-        <Accordion.Header>
-            <div>
-                <p>{props.name}</p>
-                <p>{props.description}</p>
-            </div>
-        </Accordion.Header>
-        <Accordion.Body>
-          {ingredientsToString(props.ingredients)}
-          {props.steps.map((step) => (
-										<div key={step.step_num}>
-											{`${step.step_num}. ${step.instruction}`}
-										</div>
-									))}
-        </Accordion.Body>
-      </Accordion.Item>
-      </Accordion>
+      <Card style={{ width: '18rem' }} className="recipe-item-container grow">
+      <Card.Img className="recipe-image center" variant="top" src={RecipeImage} />
+        <Card.Body className='recipe-body'>
+          <Card.Title>{props.name}</Card.Title>
+          <Card.Text>{props.cal} cal</Card.Text>
+          <Card.Text className="recipe-descrip d-flex flex-wrap">
+            {props.description}
+          </Card.Text>
+        </Card.Body>
+      </Card>
+      
     )
 }
 

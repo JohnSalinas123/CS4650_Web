@@ -2,6 +2,8 @@ import React from 'react';
 import {useState, useEffect} from 'react'
 import axios from 'axios';
 import { RecipeListItem } from './RecipeListItem';
+import { Row } from "react-bootstrap/Row";
+import { Col } from "react-bootstrap/Col";
 
 axios.defaults.baseURL = 'http://localhost:8080';
 
@@ -52,12 +54,16 @@ export const RecipesList = () => {
 		<div className='container'>
 			<h3 className='p-3 text-center'>Recipe List</h3>
 				<div className="scrollbar scrollbar-colored scrollbar-recipe-container mt-5 mx-auto">
-					{recipes &&
+					<Row>
+						{recipes &&
 						recipes.map((recipe) => (
+
 							 <RecipeListItem key={recipe._id} 
 							 	id={recipe._id} name={recipe.name} description={recipe.description} 
-									ingredients={recipe.ingredients} steps={recipe.steps}/>
+									ingredients={recipe.ingredients} steps={recipe.steps} cal={recipe.calories}/>
 						))}
+					</Row>
+					
 				</div>
 		</div>
 	);
