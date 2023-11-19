@@ -74,3 +74,11 @@
 .recipe-descrip::-webkit-scrollbar {
     display: none;
 }
+
+/* Recipe Button and Form */
+
+.recipe-add-button {
+    background-color: lightgreen !important;
+    border-color: black !important;
+    color: black !important;
+}
