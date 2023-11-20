@@ -1,9 +1,9 @@
-
+import { IngredientsList } from "../components/IngredientList";
 
 export const Ingredients = () => {
 	return (
 		<div>
-			<h1>Ingredients List</h1>
+			<IngredientsList />
 		</div>
 	);
 };
