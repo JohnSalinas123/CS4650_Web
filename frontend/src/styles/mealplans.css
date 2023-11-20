@@ -1,0 +1,15 @@
+.events {
+    position: relative;
+  }
+  
+.invis-button {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.events:hover .invis-button {
+    opacity: 1;
+}

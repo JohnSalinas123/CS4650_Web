@@ -2,13 +2,13 @@ import React from 'react';
 import {useState, useEffect} from 'react'
 import axios from 'axios';
 
-import 'bootstrap/dist/css/bootstrap.min.css'; 
-import {Card, Row, Col} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/mealplans.css';
 
+import {Card, Button, Row, Col} from 'react-bootstrap';
 import img1 from '../resources/pizza.jpg'; 
 
 axios.defaults.baseURL = 'http://localhost:8080';
-
 export const MealPlansList = () => {
 	const [meals, setMeals] = useState([])
 
@@ -36,18 +36,29 @@ export const MealPlansList = () => {
 					<div key={mealCat._id}>
 						<h2>{mealCat.userID}'s Meal Plan</h2>
 
-						<Row xs={7} md={7} className='g-4'>
+						<Row xs={7} md={7} className='justify-content-md-center p-3'>
 
 							{mealCat.meals.map((meal, index) => (
 								<Col key={index}>
 									<Card key={meal.Date}>
-										<Card.Img variant='top' src={img1}/>
+										<Card.Header as="h6">{meal.Date}</Card.Header>
+
+										<div className='events'>
+											<Card.Img variant='top' src={img1}/>
+											<Button variant='success' className='invis-button'>
+												Add
+											</Button>
+										</div>
+
 										<Card.Body>
-											<Card.Title>{meal.Date}</Card.Title>
-											<Card.Text>
+											<Card.Text >
 												{meal.Meal}
 											</Card.Text>
+											<Button variant='success'>
+												Update
+											</Button>
 										</Card.Body>
+										
 									</Card>
 								</Col>
 							))}
