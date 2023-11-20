@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+axios.defaults.baseURL = 'http://localhost:8080/';
+
 export const IngredientsList = () => {
   const [ingredients, setIngredients] = useState([]);
 
   useEffect(() => {
     axios.get("/api/ingredients")
-      .then(response => setItems(response.data))
+      .then(response => setIngredient(response.data))
       .catch(error => console.error(error));
   }, []);
 
