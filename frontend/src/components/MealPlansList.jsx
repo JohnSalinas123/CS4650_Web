@@ -1,8 +1,10 @@
 import React from 'react';
 import {useState, useEffect} from 'react'
 import axios from 'axios';
+
 import 'bootstrap/dist/css/bootstrap.min.css'; 
-import {Card, CardGroup} from 'react-bootstrap';
+import {Card, Row, Col} from 'react-bootstrap';
+
 import img1 from '../resources/pizza.jpg'; 
 
 axios.defaults.baseURL = 'http://localhost:8080';
@@ -33,20 +35,24 @@ export const MealPlansList = () => {
 			{meals.map((mealCat) =>(
 					<div key={mealCat._id}>
 						<h2>{mealCat.userID}'s Meal Plan</h2>
-						<CardGroup>
 
-							{mealCat.meals.map((meal) => (
-								<Card key={meal.Date}>
-									<Card.Body>
-										<Card.Title>{meal.Date}</Card.Title>
-										<Card.Text>
-											{meal.Meal}
-										</Card.Text>
-									</Card.Body>
-								</Card>
+						<Row xs={7} md={7} className='g-4'>
+
+							{mealCat.meals.map((meal, index) => (
+								<Col key={index}>
+									<Card key={meal.Date}>
+										<Card.Img variant='top' src={img1}/>
+										<Card.Body>
+											<Card.Title>{meal.Date}</Card.Title>
+											<Card.Text>
+												{meal.Meal}
+											</Card.Text>
+										</Card.Body>
+									</Card>
+								</Col>
 							))}
-							
-						</CardGroup>
+						
+						</Row>
 					</div>
 			))}
 		</div>
