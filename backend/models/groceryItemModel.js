@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 const groceryItemSchema = new mongoose.Schema({
     user_id: {
-        type: mongoose.Schema.Types.ObjectId, 
+        type: String,  // Changed from ObjectId to String
         required: true,
         ref: 'User'
     },
@@ -13,7 +13,7 @@ const groceryItemSchema = new mongoose.Schema({
     },
     ingredients: [{
         ingredient_id: {
-            type: mongoose.Schema.Types.ObjectId,
+            type: Number,
             required: true,
             ref: 'Ingredient'
         },
@@ -29,6 +29,6 @@ const groceryItemSchema = new mongoose.Schema({
 });
 
 
-const GroceryItem = mongoose.model('GroceryItem', groceryItemSchema);
+const GroceryItem = mongoose.model('GroceryItem', groceryItemSchema, 'groceryitems');
 
 export default GroceryItem;

@@ -1,5 +1,4 @@
-import GroceryItem from "../models/groceryItemModel.js";
-
+/*
 const testGroceryItem = {
     "_id": "ObjectId('65580c9f0b88fdd372ee7513')",
     "user_id": 1,
@@ -17,9 +16,28 @@ const testGroceryItem = {
       }
     ]
 };
-  
+ */ 
+
+
+/*replace   .json(testGroceryItems)*/
+
+import GroceryItem from "../models/groceryItemModel.js";
+import mongoose from "mongoose";
+
 
 export const getGroceryItems = async (req, res) => {
-        //const groceryItems = await GroceryItem.find({});
-        res.status(200).json(testGroceryItem);
+    try {
+        const userId = req.params.userId; // Directly use the userId as a string
+
+        // check what query looks like
+        console.log('UserID:', userId);
+        console.log('Query:', GroceryItem.find({ user_id: userId }).toString());
+
+        const groceryItems = await GroceryItem.find({ user_id: userId });
+        console.log(groceryItems);// check what is returned
+        res.status(200).json(groceryItems);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
 };
+

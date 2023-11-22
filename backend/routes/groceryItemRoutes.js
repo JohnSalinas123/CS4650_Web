@@ -1,3 +1,5 @@
+//may no longer need anymore, left here incase. if still unused, then delete
+
 import express from 'express';
 import { createGroceryItem } from '../controllers/createGroceryItem.js';
 import { getGroceryItems } from '../controllers/getGroceryItems.js';

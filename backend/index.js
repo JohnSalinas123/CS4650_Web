@@ -22,7 +22,8 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/user', userRoutes)
-app.use('/api', groceryItemRoutes)
+//app.use('/api/user/getGroceryItem', userRoutes) not needed, handeled in userRoutes
+
 //app.use('/api/ingredients', ingredientRoutes)
 //app.use('/api/recipes', recipeRoutes)
 
