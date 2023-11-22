@@ -16,7 +16,7 @@ router.post('/', createUser);
 //get: grocery items related to users object _Id
 router.get('/getGroceryItem/:userId', getGroceryItems);
 // post: creating a new grocery item
-router.post('/groceryItems', createGroceryItem);
+router.post('/createGroceryItems', createGroceryItem);
 
 // get: retrieve user meal plans
 // post: create user meal plan
