@@ -45,8 +45,8 @@ export const MealPlansList = () => {
 
 										<div className='events'>
 											<Card.Img variant='top' src={img1}/>
-											<Button variant='success' className='invis-button'>
-												Add
+											<Button variant='danger' className='invis-button'>
+												-
 											</Button>
 										</div>
 
