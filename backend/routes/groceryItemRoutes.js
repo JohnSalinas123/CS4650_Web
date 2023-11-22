@@ -1,15 +1,20 @@
 import express from 'express';
-import { createGroceryItems } from '../controllers/createGroceryItems';
-import { getGroceryItems } from './controllers/getGroceryItems';
+import { createGroceryItem } from '../controllers/createGroceryItem.js';
+import { getGroceryItems } from '../controllers/getGroceryItems.js';
 
-const app = express();
-app.use(express.json());
 
-dbConnect();
+const router = express.Router();
+router.use(express.json());
 
-app.get('/groceryitems', getGroceryItems);
+//dbConnect();
 
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
+router.get('/groceryitems', getGroceryItems).post('/groceryitems', createGroceryItem);
+
+//const PORT = process.env.PORT || 4000;
+/*
+router.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+*/
+
+export default router;

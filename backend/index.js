@@ -4,6 +4,7 @@ import cors from 'cors'
 import userRoutes from './routes/userRoutes.js';
 import ingredientRoutes from './routes/ingredientRoutes.js';
 import recipeRoutes from './routes/recipeRoutes.js';
+import groceryItemRoutes from './routes/groceryItemRoutes.js';
 import {dbConnect} from './dbConnect.js'
 
 const app = express()
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/user', userRoutes)
+app.use('/api/groceryItems', groceryItemRoutes)
 //app.use('/api/ingredients', ingredientRoutes)
 //app.use('/api/recipes', recipeRoutes)
 
