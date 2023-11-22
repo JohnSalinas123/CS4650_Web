@@ -3,6 +3,8 @@
 import express from 'express';
 import { createGroceryItem } from '../controllers/createGroceryItem.js';
 import { getGroceryItems } from '../controllers/getGroceryItems.js';
+import { deleteGroceryItem } from '../controllers/deleteGroceryItem.js'; 
+
 
 
 const router = express.Router();
@@ -12,6 +14,7 @@ const router = express.Router();
 
 router.get('/groceryItems', getGroceryItems);
 router.post('/groceryItems', createGroceryItem);
+router.delete('/groceryItems/:itemId', deleteGroceryItem);
 
 //const PORT = process.env.PORT || 4000;
 /*

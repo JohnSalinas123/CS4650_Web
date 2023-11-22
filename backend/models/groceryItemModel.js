@@ -13,7 +13,7 @@ const groceryItemSchema = new mongoose.Schema({
     },
     ingredients: [{
         ingredient_id: {
-            type: Number,
+            type: String,
             required: true,
             ref: 'Ingredient'
         },
