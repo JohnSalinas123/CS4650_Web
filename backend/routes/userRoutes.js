@@ -20,7 +20,7 @@ router.get('/getGroceryItem/:userId', getGroceryItems);
 router.post('/createGroceryItems', createGroceryItem);
 //delete: delete ingrediant from groceryitems using ingrediant id
 //router.delete('/groceryItems/:itemId', deleteGroceryItem);
-router.delete('/deleteGroceryItem/:groceryItemId/ingredient/:ingredientId', deleteGroceryItem);
+router.delete('/deleteGroceryItem/:userId/ingredient/:ingredientId', deleteGroceryItem);
 
 // get: retrieve user meal plans
 // post: create user meal plan

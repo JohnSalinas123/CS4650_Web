@@ -1,20 +1,23 @@
-import GroceryItem from "../models/groceryItemModel.js";
-
-
+import GroceryItem from "../models/groceryItemModel.js"
 export const deleteGroceryItem = async (req, res) => {
     try {
-        const { groceryItemId, ingredientId } = req.params;
-        // Find the grocery item by ID
-        const groceryItem = await GroceryItem.findById(groceryItemId);
+        const { userId, ingredientId } = req.params;
+
+        const groceryItem = await GroceryItem.findOne({ user_id: userId });
 
         if (!groceryItem) {
-            return res.status(404).json({ message: "Grocery item not found" });
+            return res.status(404).json({ message: "Grocery item for user not found" });
         }
 
-        // Filter out the ingredient to be deleted
-        groceryItem.ingredients = groceryItem.ingredients.filter(ingredient => ingredient._id.toString() !== ingredientId);
+        const stringIngredientId = String(ingredientId);
 
-        // Save the grocery item
+        const originalLength = groceryItem.ingredients.length;
+        groceryItem.ingredients = groceryItem.ingredients.filter(ingredient => ingredient.ingredient_id !== stringIngredientId);
+
+        if (groceryItem.ingredients.length === originalLength) {
+            return res.status(404).json({ message: "Ingredient not found in grocery item" });
+        }
+
         await groceryItem.save();
         res.status(200).json({ message: "Ingredient removed successfully", groceryItem });
     } catch (error) {
