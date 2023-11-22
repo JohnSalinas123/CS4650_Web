@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/user', userRoutes)
-app.use('/api/groceryItems', groceryItemRoutes)
+app.use('/api', groceryItemRoutes)
 //app.use('/api/ingredients', ingredientRoutes)
 //app.use('/api/recipes', recipeRoutes)
 

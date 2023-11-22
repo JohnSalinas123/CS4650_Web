@@ -4,11 +4,12 @@ import { getGroceryItems } from '../controllers/getGroceryItems.js';
 
 
 const router = express.Router();
-router.use(express.json());
+//router.use(express.json());
 
 //dbConnect();
 
-router.get('/groceryitems', getGroceryItems).post('/groceryitems', createGroceryItem);
+router.get('/groceryItems', getGroceryItems);
+router.post('/groceryItems', createGroceryItem);
 
 //const PORT = process.env.PORT || 4000;
 /*
