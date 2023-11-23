@@ -45,7 +45,7 @@ export const Login = () => {
 	// login user
 	const loginUser = async () => {
 		
-        const { data } = await axios.post<UserResponseGood>('api/user/login', {
+        const { data } = await axios.post('api/user/login', {
             username: username,
             password: password,
         });
