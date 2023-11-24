@@ -5,6 +5,7 @@ import { getGroceryItems } from '../controllers/getGroceryItems.js';
 import { createGroceryItem } from '../controllers/createGroceryItem.js';
 import { deleteGroceryItem } from '../controllers/deleteGroceryItem.js'; 
 import { addGroceryItem } from '../controllers/addGroceryItem.js';
+import { updateGroceryItem } from '../controllers/updateGroceryItem.js';
 //import { loginUser } from '../controllers/loginUser.js';
 
 const router = express.Router();
@@ -24,6 +25,8 @@ router.post('/createGroceryItems', createGroceryItem);
 router.delete('/deleteGroceryItem/:userId/ingredient/:ingredientId', deleteGroceryItem);
 //post: addGroceryItem
 router.post('/addGroceryItem/:userId', addGroceryItem);
+// update
+router.patch('/updateGroceryItem/:userId', updateGroceryItem);
 
 // get: retrieve user meal plans
 // post: create user meal plan
