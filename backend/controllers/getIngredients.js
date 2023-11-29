@@ -1,40 +1,14 @@
-let testIngredients = [
-    {
-        
-        "_id" : 1,
-        "name" : "Burger bun",
-        "category" : "carbohydrate",
-        "calories" : 200
-    },
-    {    
-        "_id" : 2,
-        "name" : "Burger Patty",
-        "category" : "protein",
-        "calories" : 150
-    },
-    {    
-        "_id" : 3,
-        "name" : "Tomato",
-        "category" : "vegetable",
-        "calories" : 20
-    },
-    {    
-        "_id" : 4,
-        "name" : "Cereal",
-        "category" : "carbohydrate",
-        "calories" : 150
-    },
-    {    
-        "_id" : 5,
-        "name" : "Milk",
-        "category" : "protein",
-        "calories" : 50
-    }
-]
-
+import Ingredient from "../models/ingredientModel.js";
 
 export const getIngredients = async(req, res) => {
-    console.log("Load Ingredients")
 
-    res.status(200).json(testIngredients);
+    const ingredientData = await Ingredient.find();
+    if(!ingredientData.length){
+        res.status(400).json()
+    }
+    else{
+        console.log("Load Ingredients")
+        res.status(200).json(ingredientData);
+    }
+    
 };

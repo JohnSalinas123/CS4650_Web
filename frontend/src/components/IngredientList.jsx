@@ -49,19 +49,19 @@ const IngredientImg = (props) => {
   let img = ""
 
   switch (props.type){
-    case 'carbohydrate' :
+    case 'Carbohydrate' :
       img = carb;
       break;
-    case 'protein' :
+    case 'Protein' :
       img = protein;
       break;
-  case 'vegetable' :
+  case 'Vegetable' :
       img = vege
       break;
-     case 'fat' :
+     case 'Fat' :
       img = fat;
       break;
-     case 'fruit' :
+     case 'Fruit' :
       img = fruit;
       break;
      default : 

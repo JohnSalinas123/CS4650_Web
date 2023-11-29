@@ -1,8 +1,4 @@
-import mongoose from "mongoose";
-
-
-const schema = new mongoose.Schema({ name: String,category: String, calories: Number });
-const Ingredient = mongoose.model('Ingredient', schema);
+import Ingredient from "../models/ingredientModel.js";
 
 
 export const createIngredients = async(req, res) => {
