@@ -5,7 +5,10 @@ import "../styles/ingredient.css"
 import "../styles/general.css"
 import carb from '../resources/carb_ingredient.png'
 import protein from '../resources/protein_ingredient.png'
-//import getImg from "./IngredientImg";
+import fat from '../resources/fat_ingredient.png'
+import vege from '../resources/vege_ingredient.png'
+import fruit from '../resources/fruit_ingredient.png'
+import random from '../resources/defualt_ingredient.png'
 
 axios.defaults.baseURL = 'http://localhost:8080/';
 
@@ -29,14 +32,45 @@ export const IngredientsList = () => {
 
       {ingredients.map(ingredients => (
         <div class="item-container" key={ingredients._id}>
-          <img src={protein} height = {200} width = {200}></img>
-          <h3>{ingredients.name}</h3>
-          <p>{ingredients.category}</p>
-          <p>{ingredients.calories}</p>
+          <IngredientImg type={ingredients.category}/>
+          <h3 class="name">{ingredients.name}</h3>
+          <p class="courier">{ingredients.category}</p>
+          <p class="courier">{ingredients.calories} kcal/g</p>
           
         </div>
       ))}
-    </div><p>You Reach The End</p></>
+    </div><p class="end-prompt">You Reach The End</p></>
     
   );
+}
+
+const IngredientImg = (props) => {
+
+  let img = ""
+
+  switch (props.type){
+    case 'carbohydrate' :
+      img = carb;
+      break;
+    case 'protein' :
+      img = protein;
+      break;
+  case 'vegetable' :
+      img = vege
+      break;
+     case 'fat' :
+      img = fat;
+      break;
+     case 'fruit' :
+      img = fruit;
+      break;
+     default : 
+      img = random;
+  }
+
+  console.log(img)
+
+  return (
+    <img src={img} height = {200} width = {200}></img>
+  )
 }

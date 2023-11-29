@@ -20,13 +20,25 @@
   }
 
   .item-container {
-    background-color: #E0D8DE;
-    border: #523F38;
+    border-radius: 25px;
+    border: 10px solid #A1C181;
     border-width: 5px;
     text-align: center;
     padding: 20px 0;
-    font-size: 30px;
     
+  }
+  .name {
+    font-family: "Copperplate", fantasy;
+    font-size: 30px;
+    color: #4E2B04;
+  }
+  .courier {
+    font-family: "Lucida Console", "Courier New", monospace;
+    color:#523F38;
+  }
+
+  .end-prompt {
+    text-align: center;
   }
 
   
