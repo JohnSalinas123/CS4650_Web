@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal'; 
-import Form from 'react-bootstrap/Form'
+import Form from 'react-bootstrap/Form';
+import { MultiSelect } from 'react-multi-select-component';
 
 export const RecipeForm = (props) => {
     const [recipeName, setRecipeName] = useState('');
@@ -10,6 +11,20 @@ export const RecipeForm = (props) => {
     const [recipeDiet, setRecipeDiet] = useState('');
     const [recipeIngreds, setRecipeIngreds] = useState([]);
     const [recipeSteps, setRecipeSteps] = useState([]);
+
+    axios.defaults.baseURL = 'http://localhost:8080/';
+
+    // get ingredients for multi-select form field
+    useEffect(() => {
+        try{
+          const {ingredientArr} = axios.get('api/ingredients')
+          .then(response => setIngredients(response.data))
+          .catch(error => console.error(error));
+      
+        }catch(err){
+          console.error(err);
+        }
+      }, []);
 
     const saveInput = (event) => {
 		// save input in field
@@ -21,6 +36,8 @@ export const RecipeForm = (props) => {
 				break;
 			case 'recipeDescrip':
 				setRecipeDescrip(event.target.value);
+            case 'recipeCalories':
+                setRecipeCal(event.target.value)
 				break;
 			case 'recipeDiet':
 				setRecipeDiet(event.target.value);
@@ -47,6 +64,11 @@ export const RecipeForm = (props) => {
                         <Form.Control as='textarea' rows={2} />
                     </Form.Group>
 
+                    <Form.Group className='mb-3' controlId='recipeCalories' onChange={saveInput}>
+                        <Form.Label> Calories </Form.Label>
+                        <Form.Control placeholder='Ex. 500' />
+                    </Form.Group>
+
                     <Form.Group className='mb-3' controlId='recipeDiet' onChange={saveInput}>
                         <Form.Label> Diet </Form.Label>
                         <Form.Select defaultValue="Diet...">
@@ -56,6 +78,17 @@ export const RecipeForm = (props) => {
                             <option>Keto</option>
                         </Form.Select>
                     </Form.Group>
+                    
+                    <Form.Group className='mb-3' controlId='recipeIngredients' onChange={saveInput}>
+                        <Form.Label> Ingredients </Form.Label>
+                        <Form.Control as='textarea' rows={2} />
+                    </Form.Group>
+
+                    <Form.Group className='mb-3' controlId='recipeSteps' onChange={saveInput}>
+                        <Form.Label> Steps </Form.Label>
+                        <Form.Control as='textarea' rows={2} />
+                    </Form.Group>
+
                 </Form>
             </Modal.Body>
             <Modal.Footer>
