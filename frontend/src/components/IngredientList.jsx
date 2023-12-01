@@ -3,6 +3,8 @@ import axios from "axios";
 
 import "../styles/ingredient.css"
 import "../styles/general.css"
+
+import {IngredientForm} from './IngredientForm'
 import carb from '../resources/carb_ingredient.png'
 import protein from '../resources/protein_ingredient.png'
 import fat from '../resources/fat_ingredient.png'
@@ -30,7 +32,7 @@ export const IngredientsList = () => {
 
   return (
     <>
-    <buton class="add"><img src={addButton} width={30} height={30}/></buton>
+    <buton class="add" onClick={handleShowForm}><img src={addButton} width={30} height={30}/></buton>
     <div class="grid-container">
 
       {ingredients.map(ingredients => (
