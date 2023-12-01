@@ -9,6 +9,7 @@ import fat from '../resources/fat_ingredient.png'
 import vege from '../resources/vege_ingredient.png'
 import fruit from '../resources/fruit_ingredient.png'
 import random from '../resources/defualt_ingredient.png'
+import addButton from '../resources/addButton.png'
 
 axios.defaults.baseURL = 'http://localhost:8080/';
 
@@ -28,7 +29,9 @@ export const IngredientsList = () => {
     
 
   return (
-    <><div class="grid-container">
+    <>
+    <buton class="add"><img src={addButton} width={30} height={30}/></buton>
+    <div class="grid-container">
 
       {ingredients.map(ingredients => (
         <div class="item-container" key={ingredients._id}>
