@@ -1,0 +1,47 @@
+.grocery-list-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .grocery-item {
+    margin-bottom: 15px;
+  }
+  
+  .grocery-item h4 {
+    margin-bottom: 10px;
+  }
+  
+  .quantity-box {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .grocery-item ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .grocery-item li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .grocery-item button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .grocery-item button:hover {
+    background-color: #f0f0f0;
+  }
+  
