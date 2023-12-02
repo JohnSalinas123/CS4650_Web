@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/GroceryList.css'; // Ensure this file is in the same directory as your component
+import '../styles/GroceryList.css'; 
 
 const GroceryList = () => {
   const [groceryItems, setGroceryItems] = useState([]);
+  const userId = localStorage.getItem('user'); 
 
+  
   useEffect(() => {
-    fetchGroceryItems();
-  }, []);
+    if (userId) {
+      fetchGroceryItems(userId);
+    }
+  }, [userId]);
 
-  const fetchGroceryItems = async () => {
+
+  const fetchGroceryItems = async (userId) => {
     try {
-      const response = await axios.get('/api/user/getGroceryItem/userId'); // Use the actual user ID
+      const response = await axios.get(`/api/user/getGroceryItem/${userId}`);
       setGroceryItems(response.data);
     } catch (error) {
       console.error('Error fetching grocery items:', error);
@@ -89,3 +94,7 @@ const GroceryList = () => {
 };
 
 export default GroceryList;
+
+
+
+
