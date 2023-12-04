@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
@@ -13,7 +13,7 @@ export const Navigation = () => {
         
         <Navbar bg="light" expand="lg" id="navElement" className="border-bottom border-2">
             <Container >
-                <LinkContainer to='/' >
+                <LinkContainer to='/home' >
                     <Navbar.Brand href="#home" className="brand-font-size">PantryPal</Navbar.Brand>
                 </LinkContainer>
                 
@@ -38,7 +38,7 @@ export const Navigation = () => {
                 <Navbar.Collapse className="justify-content-end">
                     <Nav className="nav-font-size">
 
-                        <LinkContainer to='/login'>
+                        <LinkContainer to='/'>
                             <Nav.Link>Login</Nav.Link>
                         </LinkContainer>
 
