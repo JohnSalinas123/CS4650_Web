@@ -8,7 +8,12 @@ import '../styles/mealplans.css';
 import {Card, Button, Row, Col} from 'react-bootstrap';
 import img1 from '../resources/pizza.jpg'; 
 
+import { data_To_Card } from './MealPlanListItem';
+
 axios.defaults.baseURL = 'http://localhost:8080';
+
+
+
 export const MealPlansList = () => {
 	const [meals, setMeals] = useState([])
 
@@ -30,6 +35,26 @@ export const MealPlansList = () => {
 		}
 	};
 	
+	const createMeal = async () => {
+		const { data } = await axios.post('api/user/createMeal',
+		{
+			user: "Bob",
+			day: "Monday",
+			meal: "Bread"
+		});
+
+	};
+
+	var mealData = {
+		meals : []
+	};
+	for (var i in meals){
+		if (i.userID == "John Doe"){
+			var mealsByDate = meals[i].meals;
+			console.log('here')
+		}
+	}
+	
 	return (
 		<div className='container'>
 			{meals.map((mealCat) =>(
@@ -39,30 +64,14 @@ export const MealPlansList = () => {
 						<Row xs={7} md={7} className='justify-content-md-center p-3'>
 
 							{mealCat.meals.map((meal, index) => (
-								<Col key={index}>
-									<Card key={meal.Date}>
-										<Card.Header as="h6">{meal.Date}</Card.Header>
-
-										<div className='events'>
-											<Card.Img variant='top' src={img1}/>
-											<Button variant='danger' className='invis-button'>
-												-
-											</Button>
-										</div>
-
-										<Card.Body>
-											<Card.Text >
-												{meal.Meal}
-											</Card.Text>
-											<Button variant='success'>
-												Update
-											</Button>
-										</Card.Body>
-										
-									</Card>
-								</Col>
+								data_To_Card(meal, index)
 							))}
-						
+
+							
+							<Button variant='success' onClick={createMeal}>
+								Create
+							</Button>
+
 						</Row>
 					</div>
 			))}
