@@ -63,3 +63,12 @@
     border-color: black !important;
     color: black !important;
 }
+
+.recipe-form {
+    width: 100% !important;
+}
+
+.recipe-ingred-row {
+    margin-bottom: 5px;
+}
+
