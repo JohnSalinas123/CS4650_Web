@@ -15,8 +15,8 @@ export function App() {
 			<Navigation />
 
 			<Routes>
-				<Route path='/' element={<Home />}></Route>
-				<Route path='/login' element={<Login />}></Route>
+				<Route path='/home' element={<Home />}></Route>
+				<Route path='/' element={<Login />}></Route>
 				<Route path='/grocery' element={<Grocery />}></Route>
 				<Route path='/ingredients' element={<Ingredients />}></Route>
 				<Route path='/recipes' element={<Recipes />}></Route>
