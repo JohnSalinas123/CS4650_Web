@@ -6,6 +6,8 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal'; 
 import Button from 'react-bootstrap/Button';
 
+import { createIngredients } from '../../../backend/controllers/createIngredient';
+
 export const IngredientForm = (props) => {
     const [ingredientName, setRecipeName] = useState('');
     const [ingredientCategory, setRecipeDescrip] = useState('');
@@ -23,7 +25,7 @@ export const IngredientForm = (props) => {
 		const eventField = event.target.id;
 
 		switch (eventField) {
-			case 'ingredientName': // uses control ID
+			case 'ingredientName': 
 				setRecipeName(event.target.value);
 				break;
 			case 'ingredientCategory':
@@ -32,9 +34,11 @@ export const IngredientForm = (props) => {
                 setRecipeCal(event.target.value)
 				break;
 			default:
-				console.log('Error: no specified field found');
-		} // end switch
+				console.log('Error: no such field');
+		}  
 	};
+
+    //createIngredients(saveInput);
 
     return (
         <Modal size="lg" centered show={props.show} onHide={props.handleClose} >

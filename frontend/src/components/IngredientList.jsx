@@ -37,7 +37,6 @@ export const IngredientsList = () => {
 
 	return (
 		<>
-			
 			<div class="grid-container">
 				{ingredients.map(ingredients => (
 					<div class="item-container" key={ingredients._id}>
