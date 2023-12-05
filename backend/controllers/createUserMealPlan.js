@@ -1,7 +1,7 @@
-import MealPlan from '../models/mealPlanModel.js'
+import MealPlan from '../models/mealPlanModel.js';
 
 export const createUserMealPlan = async (req, res) => {
-    console.log("I am in create user meal plan")
+    
     const{ user, day, meal } = req.body
 
     console.log(user);
@@ -11,6 +11,11 @@ export const createUserMealPlan = async (req, res) => {
     const query = {userID: user,
                    'meals.Date': day
                   }
-    // MealPlan.updateOne(query, {$set: {'meals.$.Meal': meal}})
+    try{
+        const result = await MealPlan.updateOne(query, {$set: {'meals.$.Meal': meal}});
+        console.log(result);
+    } catch (error){
+        console.error("Error While updating meal plans: ", error.message);
+    }
 
 }

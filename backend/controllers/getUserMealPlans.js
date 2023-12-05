@@ -8,7 +8,6 @@ export const getUserMealPlans = async(req, res) => {
         res.status(400).json()
     }
     else{
-        console.log("Got Meal Plans")
         res.status(200).json(allMealPlans)
     }
 };
