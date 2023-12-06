@@ -8,11 +8,9 @@ import Col from "react-bootstrap/Col"
 import Pagination from 'react-bootstrap/Pagination'
 import Button from 'react-bootstrap/Button'
 
-axios.defaults.baseURL = 'http://localhost:8080';
-
 const ingredientsToString = (ingredient_list) => {
 
-	console.log(ingredient_list)
+	//console.log(ingredient_list)
 
 	let ingredient_array = []
 	for (let i in ingredient_list) {
@@ -20,7 +18,7 @@ const ingredientsToString = (ingredient_list) => {
 
 	}
 
-	console.log(ingredient_array)
+	//console.log(ingredient_array)
 
 	return (
 		<div>
@@ -49,7 +47,7 @@ export const RecipesList = () => {
 				// for loop inserts each recipe into array
 				setRecipes((prevRecipe) => [...prevRecipe, recipe]); // add new recipe to end of array
 			});
-			console.log(recipes);
+			//console.log(recipes);
 		} catch (err) {
 			console.error(err);
 		}

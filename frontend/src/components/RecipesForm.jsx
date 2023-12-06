@@ -9,17 +9,6 @@ import axios from 'axios';
 import '../styles/recipe.css'
 
 
-const RecipeIngredientRow = (props) => {
-
-    return (
-        <div>
-
-        </div>
-    )
-
-}
-
-
 export const RecipeForm = (props) => {
     const [recipeName, setRecipeName] = useState('');
     const [recipeDescrip, setRecipeDescrip] = useState('');
@@ -34,21 +23,47 @@ export const RecipeForm = (props) => {
         }
     ]);
     const [recipeIngredsCount, setRecipeIngredsCount] = useState(1);
-    const [recipeSteps, setRecipeSteps] = useState([]);
 
-    axios.defaults.baseURL = 'http://localhost:8080/';
-
-    // get ingredients for multi-select form field
-    useEffect(() => {
-        try{
-          const {ingredientArr} = axios.get('api/ingredients')
-          .then(response => setIngredients(response.data))
-          .catch(error => console.error(error));
-      
-        }catch(err){
-          console.error(err);
+    const [recipeSteps, setRecipeSteps] = useState([
+        {
+            "step_num" : 1,
+            "instructions": ""
         }
-      }, []);
+    ]);
+
+    const [recipeStepsCount, setRecipeStepsCount] = useState(1);
+
+    const saveInput = (event) => {
+		// save input in field
+		const eventField = event.target.id;
+
+		switch (eventField) {
+			case 'recipeName': // uses control ID
+				setRecipeName(event.target.value);
+                console.log(recipeName)
+				break;
+			case 'recipeDescrip':
+				setRecipeDescrip(event.target.value);
+                console.log(recipeDescrip)
+            case 'recipeCalories':
+                setRecipeCal(event.target.value)
+                console.log(recipeCal)
+				break;
+			case 'recipeDiet':
+				setRecipeDiet(event.target.value);
+                console.log(recipeDiet)
+				break;
+			default:
+				console.log('Error: no specified field found');
+		};
+
+        
+        
+        
+        
+
+	}; 
+
 
     const addIngredientRow = () => {
 
@@ -67,56 +82,115 @@ export const RecipeForm = (props) => {
         console.log(recipeIngreds)
     }
 
+    const handleIngredientChange = (index, field, value) => {
+        setRecipeIngreds((prevIngreds) => {
+          const updatedIngredients = [...prevIngreds];
+          updatedIngredients[index][field] = value;
+          return updatedIngredients;
+        });
+        console.log(recipeIngreds)
+      };
+
+    const handleSubmit = () => {
+
+
+
+        console.log("SUBMIT")
+        //props.handleClose
+    }
+
+    // render ingredient rows
     const renderIngredientRows = () => {
-        console.log("ADD INGREDIENT ROW")
         return recipeIngreds.map((ingredient, index) => (
-            <div>
-                <Row key={index} className="recipe-ingred-row">
+            
+                <Row key={index} className="recipe-ingred-row align-items-center">
                     <Col xs={1} className="text-center">
                         
                             {ingredient.index}.
-        
+                        
                     </Col>
                     <Col xs={5}>
-                        <Form.Control placeholder="Name" default={ingredient.name} />
+                        <Form.Control 
+                            name={`ingredients[${index}].name`} 
+                            placeholder="Name"  
+                            onChange={(e) => handleIngredientChange(index, 'name', e.target.value)}
+                            />
                     </Col>
                     <Col>
-                        <Form.Control placeholder="Quantity" value={ingredient.quantity}/>
+                    <Form.Control 
+                        name={`ingredients[${index}].quantity`} 
+                        placeholder="Quantity"  
+                        onChange={(e) => handleIngredientChange(index, 'quantity', e.target.value)}
+                        />
+
                     </Col>
                     <Col>
-                        <Form.Select defaultValue="Diet..." value={ingredient.unit}>
-                            <option>ml</option>
+                        <Form.Select 
+                            name={`ingredients[${index}].unit`} 
+                            onChange={(e) => handleIngredientChange(index, 'unit', e.target.value)}
+                            >
                             <option>grams</option>
+                            <option>ml</option>
                             <option>cups</option>
                             <option>oz</option>
                         </Form.Select>
                     </Col>    
                 </Row>
-            </div>
+            
         ));
 
     }
 
-    const saveInput = (event) => {
-		// save input in field
-		const eventField = event.target.id;
 
-		switch (eventField) {
-			case 'recipeName': // uses control ID
-				setRecipeName(event.target.value);
-				break;
-			case 'recipeDescrip':
-				setRecipeDescrip(event.target.value);
-            case 'recipeCalories':
-                setRecipeCal(event.target.value)
-				break;
-			case 'recipeDiet':
-				setRecipeDiet(event.target.value);
-				break;
-			default:
-				console.log('Error: no specified field found');
-		} // end switch
-	}; // end saveInput const
+    const addStepRow = () => {
+
+        let stepCount = recipeStepsCount + 1
+
+        setRecipeStepsCount(stepCount)
+
+        const newStepRow = {
+            step_num: stepCount,
+            instructions : ""
+
+        }
+        setRecipeSteps((prevSteps) => [...prevSteps, newStepRow]);
+        console.log(recipeSteps)
+    }
+
+    const handleStepsChange = (index, field, value) => {
+        setRecipeSteps((prevSteps) => {
+          const updatedSteps = [...prevSteps];
+          updatedSteps[index][field] = value;
+          return updatedSteps;
+        });
+        console.log(recipeSteps)
+      };
+
+    // render ingredient rows
+    const renderStepRows = () => {
+        return recipeSteps.map((step, index) => (
+            
+                <Row key={index} className="recipe-ingred-row align-items-center">
+                    <Col xs={1} className="text-center">
+                        
+                            {step.step_num}.
+                        
+                    </Col>
+                    <Col>
+                        <Form.Control 
+                            name={`steps[${index}].instructions`} 
+                            as="textarea"
+                            placeholder="Recipe instructions..."  
+                            onChange={(e) => handleStepsChange(index, 'instructions', e.target.value)}
+                            />
+                    </Col>
+                    
+                </Row>
+            
+        ));
+
+    }
+
 
     return (
             <Modal size="lg" centered show={props.show} onHide={props.handleClose}>
@@ -124,24 +198,31 @@ export const RecipeForm = (props) => {
                 <Modal.Title>Create a new recipe!</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form className='fw-bold'>
                         <Row>
                             <Col>
-                                <Form.Group className='mb-3' controlId='recipeName' onChange={saveInput}>
+                                <Form.Group className='mb-3' controlId='recipeName'>
                                     <Form.Label> Name </Form.Label>
-                                    <Form.Control placeholder='Ex: Pepperoni Pizza' />
+                                    <Form.Control 
+                                        placeholder='Ex: Pepperoni Pizza' 
+                                        onChange={saveInput}/>
                                 </Form.Group>
                             </Col>
                             <Col>
-                                <Form.Group className='mb-3' controlId='recipeCalories' onChange={saveInput}>
+                                <Form.Group className='mb-3' controlId='recipeCalories'>
                                     <Form.Label> Calories </Form.Label>
-                                    <Form.Control placeholder='Ex. 500' />
+                                    <Form.Control 
+                                        placeholder='Ex. 500' 
+                                        onChange={saveInput}/>
                                 </Form.Group>
                             </Col>
                             <Col>
-                                <Form.Group className='mb-3' controlId='recipeDiet' onChange={saveInput}>
+                                <Form.Group className='mb-3' controlId='recipeDiet'>
                                     <Form.Label> Diet </Form.Label>
-                                    <Form.Select defaultValue="Diet...">
+                                    <Form.Select 
+                                        defaultValue="Diet..."
+                                        onChange={saveInput} 
+                                        >
                                         <option>Omnivore</option>
                                         <option>Vegetarian</option>
                                         <option>Vegan</option>
@@ -152,26 +233,36 @@ export const RecipeForm = (props) => {
 
                         </Row>
 
-                        <Form.Group className='mb-3' controlId='recipeDescrip' onChange={saveInput}>
+                        <Form.Group className='mb-3' controlId='recipeDescrip'>
                             <Form.Label> Description </Form.Label>
-                            <Form.Control as='textarea' rows={2} />
+                            <Form.Control 
+                                as='textarea' 
+                                rows={2} 
+                                onChange={saveInput}
+                                />
                         </Form.Group>
                         
-                        <Form.Group className='mb-3' controlId='recipeIngredients' onChange={saveInput}>
+                        <Form.Group className='mb-3' controlId='recipeIngredients'>
                             <Form.Label> Ingredients </Form.Label>
-                            <Form>
-                                {renderIngredientRows()}
-                                <Row>
-                                    <Col className="d-grid">
-                                        <Button  onClick={addIngredientRow}>Add</Button>
-                                    </Col>
-                                </Row>    
-                            </Form>
+                            {renderIngredientRows()}
+                            <Row>
+                                <Col className="d-grid">
+                                    <Button  onClick={addIngredientRow}>Add Another Ingredient</Button>
+                                </Col>
+                            </Row>    
+                            
                         </Form.Group>
 
-                        <Form.Group className='mb-3' controlId='recipeSteps' onChange={saveInput}>
-                            <Form.Label> Steps </Form.Label>
-                            <Form.Control as='textarea' rows={2} />
+                        <Form.Group className='mb-3' controlId='recipeSteps'>
+                            <Form.Label> Instructions </Form.Label>
+
+                            {renderStepRows()}
+                            <Row>
+                                <Col className="d-grid">
+                                    <Button  onClick={addStepRow}>Add Another Instructions</Button>
+                                </Col>
+                            </Row>   
+
                         </Form.Group>
 
                     </Form>
@@ -180,8 +271,8 @@ export const RecipeForm = (props) => {
                     <Button variant="secondary" onClick={props.handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={props.handleClose}>
-                        Save Recipe
+                    <Button variant="primary" onClick={handleSubmit}>
+                        Submit
                     </Button>
                 </Modal.Footer>
         </Modal>
