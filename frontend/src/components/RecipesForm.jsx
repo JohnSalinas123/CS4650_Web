@@ -4,7 +4,6 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { MultiSelect } from 'react-multi-select-component';
 import axios from 'axios';
 import '../styles/recipe.css'
 
@@ -216,9 +215,34 @@ export const RecipeForm = (props) => {
 
     }
 
+    const cleanFromOnClose = () => {
+
+        setRecipeName("")
+        setRecipeCal("")
+        setRecipeDiet("")
+        setRecipeDescrip("")
+        setRecipeIngreds([
+            {
+                "index": 1,
+                "name": "",
+                "quantity": "",
+                "unit" : "grams"
+            }
+        ])
+        setRecipeSteps([
+            {
+                "step_num" : 1,
+                "instructions": ""
+            }
+        ])
+
+
+        props.handleClose()
+    }
+
 
     return (
-            <Modal size="lg" centered show={props.show} onHide={props.handleClose}>
+            <Modal size="lg" centered show={props.show} onHide={cleanFromOnClose}>
                 <Modal.Header closeButton>
                 <Modal.Title>Create a new recipe!</Modal.Title>
                 </Modal.Header>
