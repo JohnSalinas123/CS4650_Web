@@ -14,12 +14,15 @@ export const IngredientForm = (props) => {
     const [ingredientCalories, setIngredientCal] = useState('');    
 
     
-    const handleSubmit = async() => {
+    const handleSubmit =  async () => {
         const {data} = await axios.post('api/ingredients',{
             name: ingredientName,
             category: ingredientCategory,
-            calories: ingredientCalories});
+            calories: ingredientCalories
+        });
 
+            console.log(data);
+            handleCloseForm();
     }
 
     const saveInput = (event) => {
@@ -31,6 +34,7 @@ export const IngredientForm = (props) => {
 				break;
 			case 'ingredientCategory':
 				setIngredientCate(event.target.value);
+                break;
             case 'ingredientCalories':
                 setIngredientCal(event.target.value)
 				break;
@@ -47,27 +51,34 @@ export const IngredientForm = (props) => {
                 <Modal.Body>
 
                 </Modal.Body>
-                <Form  show={props.show} onHide={props.handleClose} onSubmit={handleSubmit} style={{maxWidth: '200px', margin: 'auto' }}>
+                <Form style={{maxWidth: '200px', margin: 'auto' }}>
                     <Col>
                         <Form.Group className='mb-3' controlId='ingredientName' onChange={saveInput}>
                             <Form.Label> Name </Form.Label>
-                            <Form.Control placeholder='Ex: Kiwi' />
+                            <Form.Control placeholder='Ex: Bagel' />
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group className='mb-3' controlId='ingredientCategory' onChange={saveInput}>
                             <Form.Label> Category </Form.Label>
-                            <Form.Control placeholder='Ex: Fruit' />
+                            <Form.Select>
+                            <option value="Carbohydrate">Carbohydrate</option>
+                            <option value="Protein">Protein</option>
+                            <option value="Vegetable">Vegetable</option>
+                            <option value="Fat">Fat</option>
+                            <option value="Fruit">Fruit</option>
+                            <option value="Other">Other</option>
+                            </Form.Select>
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group className='mb-3' controlId='ingredientCalories' onChange={saveInput}>
                             <Form.Label> Calories </Form.Label>
-                            <Form.Control placeholder='Ex: 42' />
+                            <Form.Control placeholder='Ex: 245' />
                         </Form.Group>
                     </Col>
                     <Modal.Footer>
-                        <Button type="submit" onClick={props.handleClose}>
+                        <Button type="submit" onClick={handleSubmit}>
                             Add
                         </Button>
                     </Modal.Footer>

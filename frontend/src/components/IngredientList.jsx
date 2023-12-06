@@ -37,6 +37,8 @@ export const IngredientsList = () => {
 
 	return (
 		<>
+			<button class="add" onClick={handleShowForm}><img src={addButton} width={30} height={30}/></button>
+
 			<div class="grid-container">
 				{ingredients.map(ingredients => (
 					<div class="item-container" key={ingredients._id}>
@@ -47,11 +49,9 @@ export const IngredientsList = () => {
 					</div>
 				))}
 				
-				<button onClick={handleShowForm}><img src={addButton} width={200} height={200}/></button>
-				<IngredientForm show={showingForm} handleClose={handleCloseForm} />
-
 			</div>
 
+			<IngredientForm show={showingForm} handleClose={handleCloseForm} />
 			<p class="end-prompt">You Reach The End</p>
 		</>
 	
