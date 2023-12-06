@@ -21,24 +21,28 @@ export const IngredientsList = () => {
 
 
 	useEffect(() => {
+		getData();
+	}, []);
+		
+	const getData = async () => {
 		try{
-			const {ingredientArr} = axios.get('api/ingredients')
-			.then(response => setIngredients(response.data))
-			.catch(error => console.error(error));
+			// const {ingredientArr} = axios.get('api/ingredients')
+			// .then(response => setIngredients(response.data))
+			// .catch(error => console.error(error));
 	
+			const response = await axios.get('api/ingredients');
+			setIngredients(response.data);
 		}catch(err){
 			console.error(err);
 		}
-	}, []);
-		
-	const handleShowForm = () => setShowingForm(true);
 
+	}
+	const handleShowForm = () => setShowingForm(true);
 	const handleCloseForm = () => setShowingForm(false);
 
 	return (
 		<>
 			<button class="add" onClick={handleShowForm}><img src={addButton} width={30} height={30}/></button>
-
 			<div class="grid-container">
 				{ingredients.map(ingredients => (
 					<div class="item-container" key={ingredients._id}>
@@ -48,7 +52,8 @@ export const IngredientsList = () => {
 						<p class="courier">{ingredients.calories} kcal/100g</p>
 					</div>
 				))}
-				
+
+
 			</div>
 
 			<IngredientForm show={showingForm} handleClose={handleCloseForm} />
@@ -88,9 +93,3 @@ const IngredientImg = (props) => {
 		<img src={img} height = {200} width = {200}></img>
 	)
 }
-
-const handleClick = () => {
-	  // Logic to execute when the button is clicked
-	  console.log('Button clicked!');
-	
-}  

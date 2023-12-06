@@ -6,11 +6,9 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal'; 
 import Button from 'react-bootstrap/Button';
 
-import { createIngredients } from '../../../backend/controllers/createIngredient';
-
 export const IngredientForm = (props) => {
     const [ingredientName, setIngredientName] = useState('');
-    const [ingredientCategory, setIngredientCate] = useState('');
+    const [ingredientCategory, setIngredientCate] = useState('Carbohydrate');
     const [ingredientCalories, setIngredientCal] = useState('');    
 
     
@@ -20,11 +18,9 @@ export const IngredientForm = (props) => {
             category: ingredientCategory,
             calories: ingredientCalories
         });
-
-            console.log(data);
-            handleCloseForm();
-    }
-
+        console.log(data);
+        handleCloseForm();
+    };
     const saveInput = (event) => {
 		const eventField = event.target.id;
 
@@ -43,6 +39,10 @@ export const IngredientForm = (props) => {
 		}  
 	};
 
+
+    const handleSelect = (event) =>{
+        setIngredientCate(event.target.value);
+    };
     return (
         <Modal size="lg" centered show={props.show} onHide={props.handleClose} >
                 <Modal.Header closeButton>
@@ -61,13 +61,13 @@ export const IngredientForm = (props) => {
                     <Col>
                         <Form.Group className='mb-3' controlId='ingredientCategory' onChange={saveInput}>
                             <Form.Label> Category </Form.Label>
-                            <Form.Select>
-                            <option value="Carbohydrate">Carbohydrate</option>
-                            <option value="Protein">Protein</option>
-                            <option value="Vegetable">Vegetable</option>
-                            <option value="Fat">Fat</option>
-                            <option value="Fruit">Fruit</option>
-                            <option value="Other">Other</option>
+                            <Form.Select value={ingredientCategory} onChange={handleSelect}>
+                                <option value="Carbohydrate">Carbohydrate</option>
+                                <option value="Protein">Protein</option>
+                                <option value="Vegetable">Vegetable</option>
+                                <option value="Fat">Fat</option>
+                                <option value="Fruit">Fruit</option>
+                                <option value="Other">Other</option>
                             </Form.Select>
                         </Form.Group>
                     </Col>
