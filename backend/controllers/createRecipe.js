@@ -12,8 +12,6 @@ export const createRecipe = async (req, res) => {
         steps
     } = req.body
 
-    ingredients = {}
-    for
 
     console.log("Creating recipe!")
 
