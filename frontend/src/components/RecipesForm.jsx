@@ -12,8 +12,8 @@ import '../styles/recipe.css'
 export const RecipeForm = (props) => {
     const [recipeName, setRecipeName] = useState('');
     const [recipeDescrip, setRecipeDescrip] = useState('');
-    const [recipeCal, setRecipeCal] = useState('');
-    const [recipeDiet, setRecipeDiet] = useState('');
+    const [recipeCal, setRecipeCal] = useState();
+    const [recipeDiet, setRecipeDiet] = useState('Balanced');
     const [recipeIngreds, setRecipeIngreds] = useState([
         {
             "index": 1,
@@ -45,6 +45,7 @@ export const RecipeForm = (props) => {
 			case 'recipeDescrip':
 				setRecipeDescrip(event.target.value);
                 console.log(recipeDescrip)
+                break;
             case 'recipeCalories':
                 setRecipeCal(event.target.value)
                 console.log(recipeCal)
@@ -93,6 +94,8 @@ export const RecipeForm = (props) => {
 
     const handleSubmit = async () => {
 
+
+
         const { data } = await axios.post('api/recipes',
 		{
 			name: recipeName,
@@ -104,8 +107,21 @@ export const RecipeForm = (props) => {
 
 		});
 
+        props.setRecipesList((prevRecipe) => [
+            ...prevRecipe,
+            {
+                name: recipeName,
+                description: recipeDescrip,
+                calories: recipeCal,
+                diet: recipeDiet,
+                ingredients: recipeIngreds,
+                steps: recipeSteps 
+            }
+        ]);
+
+
         console.log("SUBMIT")
-        //props.handleClose
+        props.handleClose()
     }
 
     // render ingredient rows
@@ -232,7 +248,7 @@ export const RecipeForm = (props) => {
                                         defaultValue="Diet..."
                                         onChange={saveInput} 
                                         >
-                                        <option>Omnivore</option>
+                                        <option>Balanced</option>
                                         <option>Vegetarian</option>
                                         <option>Vegan</option>
                                         <option>Keto</option>

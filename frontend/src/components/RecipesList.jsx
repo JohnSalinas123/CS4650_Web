@@ -79,7 +79,7 @@ export const RecipesList = () => {
 				
 			</Row>
 			
-			<RecipeForm show={showingForm}  handleClose={handleCloseForm}/>
+			<RecipeForm show={showingForm}  handleClose={handleCloseForm} setRecipesList={setRecipes}/>
 
 			<div className='recipe-list-container'>
 				<Pagination className='recipe-pagination'>
