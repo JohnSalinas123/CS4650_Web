@@ -9,36 +9,35 @@ import Button from 'react-bootstrap/Button';
 import { createIngredients } from '../../../backend/controllers/createIngredient';
 
 export const IngredientForm = (props) => {
-    const [ingredientName, setRecipeName] = useState('');
-    const [ingredientCategory, setRecipeDescrip] = useState('');
-    const [ingredientCalories, setRecipeCal] = useState('');    
+    const [ingredientName, setIngredientName] = useState('');
+    const [ingredientCategory, setIngredientCate] = useState('');
+    const [ingredientCalories, setIngredientCal] = useState('');    
 
-    const handleButtonClick = () => {
-            setShowForm(true);
-    };
+    
+    const handleSubmit = async() => {
+        const {data} = await axios.post('api/ingredients',{
+            name: ingredientName,
+            category: ingredientCategory,
+            calories: ingredientCalories});
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    };
+    }
 
     const saveInput = (event) => {
 		const eventField = event.target.id;
 
 		switch (eventField) {
 			case 'ingredientName': 
-				setRecipeName(event.target.value);
+				setIngredientName(event.target.value);
 				break;
 			case 'ingredientCategory':
-				setRecipeDescrip(event.target.value);
+				setIngredientCate(event.target.value);
             case 'ingredientCalories':
-                setRecipeCal(event.target.value)
+                setIngredientCal(event.target.value)
 				break;
 			default:
 				console.log('Error: no such field');
 		}  
 	};
-
-    //createIngredients(saveInput);
 
     return (
         <Modal size="lg" centered show={props.show} onHide={props.handleClose} >
@@ -68,7 +67,7 @@ export const IngredientForm = (props) => {
                         </Form.Group>
                     </Col>
                     <Modal.Footer>
-                        <Button onClick={props.handleClose}>
+                        <Button type="submit" onClick={props.handleClose}>
                             Add
                         </Button>
                     </Modal.Footer>

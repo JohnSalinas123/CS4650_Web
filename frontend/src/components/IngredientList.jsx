@@ -12,22 +12,22 @@ import vege from '../resources/vege_ingredient.png';
 import fruit from '../resources/fruit_ingredient.png';
 import random from '../resources/defualt_ingredient.png';
 import addButton from '../resources/addButton.png';
-import Col from 'react-bootstrap/Col';
 
 axios.defaults.baseURL = 'http://localhost:8080/';
 
 export const IngredientsList = () => {
 	const [ingredients, setIngredients] = useState([]);
 	const [showingForm, setShowingForm] = useState(false)
-	
+
+
 	useEffect(() => {
 		try{
-		const {ingredientArr} = axios.get('api/ingredients')
-		.then(response => setIngredients(response.data))
-		.catch(error => console.error(error));
+			const {ingredientArr} = axios.get('api/ingredients')
+			.then(response => setIngredients(response.data))
+			.catch(error => console.error(error));
 	
 		}catch(err){
-		console.error(err);
+			console.error(err);
 		}
 	}, []);
 		
@@ -47,8 +47,8 @@ export const IngredientsList = () => {
 					</div>
 				))}
 				
-				<buton class="add" onClick={handleShowForm}><img src={addButton} width={30} height={30}/></buton>
-				<IngredientForm show={showingForm} handleClose={handleCloseForm}/>
+				<button onClick={handleShowForm}><img src={addButton} width={200} height={200}/></button>
+				<IngredientForm show={showingForm} handleClose={handleCloseForm} />
 
 			</div>
 
