@@ -91,9 +91,18 @@ export const RecipeForm = (props) => {
         console.log(recipeIngreds)
       };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
 
+        const { data } = await axios.post('api/recipes',
+		{
+			name: recipeName,
+			description: recipeDescrip,
+			calories: recipeCal,
+            diet: recipeDiet,
+            ingredients: recipeIngreds,
+            steps: recipeSteps
 
+		});
 
         console.log("SUBMIT")
         //props.handleClose
@@ -259,7 +268,7 @@ export const RecipeForm = (props) => {
                             {renderStepRows()}
                             <Row>
                                 <Col className="d-grid">
-                                    <Button  onClick={addStepRow}>Add Another Instructions</Button>
+                                    <Button  onClick={addStepRow}>Add Another Instruction</Button>
                                 </Col>
                             </Row>   
 
