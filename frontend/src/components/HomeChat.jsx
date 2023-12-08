@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import { useLocation } from "react-router-dom";
-//import { SocketContext } from '../context/socket';
+import { SocketContext } from '../context/socket';
 import axios from 'axios';
 import '../styles/homechat.css';
 
@@ -19,7 +19,6 @@ export const HomeChat = () => {
 
     } ,[messages])
 
-    /*
     useEffect(() => {
 
         initialSetup();
@@ -30,7 +29,6 @@ export const HomeChat = () => {
 
         return () => socket.disconnect();
     }, [])
-    */
 
     const handleMessage = () => {
 
@@ -49,21 +47,19 @@ export const HomeChat = () => {
     }
 
     return (
-
-        <div className="outer-chatbox">
+        <div className="chat-container">
             <HomeChatCurUser userName={username} />
 
             <div className="chatbox">
                 {
-                   messages.map((msg) => (
-                     <HomeChatMsg key={msg.userName} message={msg.text} date={msg.date} owner={username}/> 
+                    messages.map((msg) => (
+                        <HomeChatMsg key={msg.userName} message={msg.text} date={msg.date} owner={username}/> 
                     ))
                 }
                 <div ref={bottomRef} />
             </div>
             <HomeChatInput setInput={setInput} handleClick={handleMessage}/>
         </div>
-
     )
 }
 

@@ -21,6 +21,11 @@
 
 /* ---CHATBOX FRAME--- */
 
+.chat-container {
+    height: 60%;
+    width: 60%;
+}
+
 .current-user-box {
     display: inline-block;
     width: 100%;
@@ -39,24 +44,13 @@
 
 }
 
-.outer-chatbox {
-    display: flex;
-    flex-direction: column;
-    border: 3px solid black;
-    border-radius: 20px;
-    margin: auto;
-    width: 80%;
-    height: 60%;
-    background-color: var(--dark);
-
-}
-
 .chatbox {
     overflow-y: scroll;
-    border: 3px solid black;
-    border-radius: 10px;
+    border-width: 1px 1px 0 1px;
+    border-style: solid;
+    border-color: black;
     width: 90%;
-    height: 80vh;
+    height: 100%;
     margin-left: 5%;
     background-color: var(--light)
 
@@ -72,14 +66,13 @@
 
 .chat-textbox-box {
     background-color: var(--lightest);
-    border: 3px solid black;
-    border-radius: 20px;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: black;
     display: inline-block;
     width: 76%;
     height: 40px;
-    margin-top: 13px;
     margin-bottom: 13px;
-    margin-right: 3%;
 }
 
 .chat-textbox {
@@ -87,9 +80,8 @@
     border: none;
     width: 96%;
     height: 100%;
-    margin-left: 2%;
     font-size: 22px;
-    
+    margin-left: 2%;
 }
 
 input:focus {
@@ -97,10 +89,10 @@ input:focus {
 }
 
 .chat-button {
-    border: 3px solid black;
-    border-radius: 30px;
-    background-color: orange;
-    width: 21%;
+    border-width: 1px 1px 1px 0;
+    border-style: solid;
+    border-color: black;
+    width: 24%;
     height: 40px;
     font-size: 20px;
 
