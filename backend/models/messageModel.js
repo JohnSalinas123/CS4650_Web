@@ -1,4 +1,4 @@
-import mongoose, { Shema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 const MessageSchema = new Schema({
     username: {type: String, required: true},
