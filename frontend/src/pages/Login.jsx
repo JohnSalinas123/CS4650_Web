@@ -36,7 +36,8 @@ export const Login = () => {
 	}
 
 	const checkIfUserLoggedIn = () => {
-		const loggedInData = localStorage.getItem("user");
+		const loggedInId = localStorage.getItem("id");
+		const loggedInUsername = localStorage.getItem('username')
 		console.dir(loggedInData)
 		if (loggedInData) {
 			const foundUser = loggedInData;
@@ -78,7 +79,8 @@ export const Login = () => {
             password: password,
         });
 
-		localStorage.setItem('user', data.id)
+		localStorage.setItem('id', data.id)
+		localStorage.setItem('username', data.username)
 		console.log(data)
 
         navigate('/home', {
