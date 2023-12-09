@@ -38,9 +38,9 @@ export const Login = () => {
 	const checkIfUserLoggedIn = () => {
 		const loggedInId = localStorage.getItem("id");
 		const loggedInUsername = localStorage.getItem('username')
-		console.dir(loggedInData)
-		if (loggedInData) {
-			const foundUser = loggedInData;
+		console.dir(loggedInId)
+		if (loggedInId) {
+			const foundUser = loggedInId;
 			setUserIDToken(foundUser);
 		}
 
