@@ -3,6 +3,13 @@ import { createUser } from '../controllers/createUser.js';
 import { getUserMealPlans } from '../controllers/getUserMealPlans.js';
 import { loginUser } from '../controllers/loginUser.js';
 
+import { createGroceryItem } from '../controllers/createGroceryItem.js';
+import { getGroceryItems } from '../controllers/getGroceryItems.js';
+import { deleteGroceryItem } from '../controllers/deleteGroceryItem.js'; 
+import { addGroceryItem } from '../controllers/addGroceryItem.js';
+import { updateGroceryItem } from '../controllers/updateGroceryItem.js';
+
+
 const router = express.Router();
 
 

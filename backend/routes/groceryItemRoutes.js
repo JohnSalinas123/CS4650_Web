@@ -1,26 +1,27 @@
-//may no longer need anymore, left here incase. if still unused, then delete
 
 import express from 'express';
 import { createGroceryItem } from '../controllers/createGroceryItem.js';
 import { getGroceryItems } from '../controllers/getGroceryItems.js';
 import { deleteGroceryItem } from '../controllers/deleteGroceryItem.js'; 
+import { addGroceryItem } from '../controllers/addGroceryItem.js';
+import { updateGroceryItem } from '../controllers/updateGroceryItem.js';
 
 
 
 const router = express.Router();
-//router.use(express.json());
 
-//dbConnect();
 
-router.get('/groceryItems', getGroceryItems);
-router.post('/groceryItems', createGroceryItem);
-router.delete('/groceryItems/:itemId', deleteGroceryItem);
+//get: grocery items related to users object _Id
+router.get('/getGroceryItem/:userId', getGroceryItems);
+// post: creating a new grocery item
+router.post('/createGroceryItems', createGroceryItem);
+//delete: delete ingrediant from groceryitems using ingrediant id
+//router.delete('/groceryItems/:itemId', deleteGroceryItem);
+router.delete('/deleteGroceryItem/:userId/ingredient/:ingredientId', deleteGroceryItem);
+//post: addGroceryItem
+router.post('/addGroceryItem/:userId', addGroceryItem);
+// update
+router.patch('/updateGroceryItem/:userId', updateGroceryItem);
 
-//const PORT = process.env.PORT || 4000;
-/*
-router.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
-*/
 
 export default router;
