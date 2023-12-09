@@ -4,7 +4,7 @@ import '../styles/GroceryList.css';
 
 const GroceryList = () => {
   const [groceryItems, setGroceryItems] = useState([]);
-  const userId = "6558101f0b88fdd372f28e55"//localStorage.getItem('user'); 
+  const userId = string(localStorage.getItem('Id')); 
 
   
   useEffect(() => {
