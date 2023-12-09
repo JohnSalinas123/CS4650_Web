@@ -1,6 +1,8 @@
 #home-page {
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 /* ---SCROLL BAR--- */
@@ -51,7 +53,6 @@
     border-color: black;
     width: 90%;
     height: 100%;
-    margin-left: 5%;
     background-color: var(--light)
 
 }
@@ -59,7 +60,7 @@
 /* ---CHATBOX INPUT--- */
 
 .chat-input {
-    margin: auto;
+    margin: 0;
     width: 90%;
     height: 70px;
 }

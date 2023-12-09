@@ -2,10 +2,14 @@ import { Server } from 'socket.io';
 import Message from './models/messageModel.js';
 
 export const SocketServer = (httpServer) => {
-    const io = new Server(httpServer, {})
-
+    const io = new Server(httpServer, {
+        cors: {
+            origin: 'http://localhost:5173', // match client app
+            methods: ['GET', 'POST'],
+        },
+    })
+    
     io.on("connection", (socket) => {
-        console.log(`Socket server running on port ${socketPort}`)
 
         socket.on("login", (username) => {
             console.log(`${username} has logged in!`)

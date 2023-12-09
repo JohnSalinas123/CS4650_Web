@@ -13,6 +13,8 @@ export const HomeChat = () => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
 
+    const socket = useContext(SocketContext)
+
     useEffect(() => {
 
         bottomRef.current?.scrollIntoView({behavior: 'smooth'});
@@ -29,6 +31,31 @@ export const HomeChat = () => {
 
         return () => socket.disconnect();
     }, [])
+
+    // get all messages when user enters chat
+    // TODO: get only the first 20 messsages
+    const initialSetup = async () => {
+
+        if (id == null || username == null) {
+            return;
+        }
+
+        try {
+
+            const { data } = await axios.get("/api/messages");
+            
+            
+            data.forEach(message => {
+                setMessages(old => [...old, message]);
+            });
+
+        } catch(error) {
+
+            console.log(error);
+
+        }
+
+    }
 
     const handleMessage = () => {
 

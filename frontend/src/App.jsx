@@ -7,22 +7,25 @@ import { Ingredients } from './pages/Ingredients';
 import { Recipes } from './pages/Recipes';
 import { MealPlans } from './pages/MealPlans';
 import './styles/general.css';
+import { socket, SocketContext } from "./context/socket.js";
 
 
 export function App() {
 	return (
-		<div id='root-div'>
-			<Navigation />
+		<SocketContext.Provider value={socket}>
+			<div id='root-div'>
+				<Navigation />
 
-			<Routes>
-				<Route path='/home' element={<Home />}></Route>
-				<Route path='/' element={<Login />}></Route>
-				<Route path='/grocery' element={<Grocery />}></Route>
-				<Route path='/ingredients' element={<Ingredients />}></Route>
-				<Route path='/recipes' element={<Recipes />}></Route>
-				<Route path='/mealplans' element={<MealPlans />}></Route>
+				<Routes>
+					<Route path='/home' element={<Home />}></Route>
+					<Route path='/' element={<Login />}></Route>
+					<Route path='/grocery' element={<Grocery />}></Route>
+					<Route path='/ingredients' element={<Ingredients />}></Route>
+					<Route path='/recipes' element={<Recipes />}></Route>
+					<Route path='/mealplans' element={<MealPlans />}></Route>
 
-			</Routes>
-		</div>
+				</Routes>
+			</div>
+		</SocketContext.Provider>
 	);
 }
