@@ -1,12 +1,7 @@
 import express from 'express';
 import { createUser } from '../controllers/createUser.js';
 import { getUserMealPlans } from '../controllers/getUserMealPlans.js';
-import { getGroceryItems } from '../controllers/getGroceryItems.js';
-import { createGroceryItem } from '../controllers/createGroceryItem.js';
-import { deleteGroceryItem } from '../controllers/deleteGroceryItem.js'; 
-import { addGroceryItem } from '../controllers/addGroceryItem.js';
-import { updateGroceryItem } from '../controllers/updateGroceryItem.js';
-//import { loginUser } from '../controllers/loginUser.js';
+import { loginUser } from '../controllers/loginUser.js';
 
 const router = express.Router();
 
@@ -14,7 +9,8 @@ const router = express.Router();
 // post: create a user
 router.post('/', createUser);
 // post: login user
-//router.post('/login', loginUser);
+router.post('/', createUser)
+router.post('/login', loginUser);
 
 //get: grocery items related to users object _Id
 router.get('/getGroceryItem/:userId', getGroceryItems);

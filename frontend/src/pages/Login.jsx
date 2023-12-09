@@ -10,13 +10,42 @@ export const Login = () => {
 	const [username, setUserName] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirm, setConfirm] = useState('');
+	const [userIDToken, setUserIDToken] = useState()
 
 	// alert message
 	const [alert, setAlert] = useState('');
 
+	useEffect(() => {
+		// check if user is logged in
+		checkIfUserLoggedIn();
+
+	}, [])
+
 	// utils
 	const navigate = useNavigate();
 	const [loginMode, setLoginMode] = useState(true);
+
+	if (userIDToken) {
+		navigate('/home', {
+            replace: false,
+            state: {
+                id: userIDToken,
+                username: username,
+            },
+        });
+	}
+
+	const checkIfUserLoggedIn = () => {
+		const loggedInId = localStorage.getItem("id");
+		const loggedInUsername = localStorage.getItem('username')
+		console.dir(loggedInData)
+		if (loggedInData) {
+			const foundUser = loggedInData;
+			setUserIDToken(foundUser);
+		}
+
+
+	} 
 
 	// toggle between login/signup
 	const toggleMode = () => {
@@ -45,12 +74,16 @@ export const Login = () => {
 	// login user
 	const loginUser = async () => {
 		
-        const { data } = await axios.post<UserResponseGood>('api/user/login', {
+        const { data } = await axios.post('api/user/login', {
             username: username,
             password: password,
         });
 
-        navigate('/', {
+		localStorage.setItem('id', data.id)
+		localStorage.setItem('username', data.username)
+		console.log(data)
+
+        navigate('/home', {
             replace: false,
             state: {
                 id: data.id,
