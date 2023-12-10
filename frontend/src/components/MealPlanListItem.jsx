@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
 
-import {Card, Button, Col, Modal} from 'react-bootstrap';
+import {Card, Button, Col} from 'react-bootstrap';
 import img1 from '../resources/pizza.jpg'; 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
