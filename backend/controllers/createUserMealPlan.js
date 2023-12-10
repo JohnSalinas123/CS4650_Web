@@ -12,10 +12,22 @@ export const createUserMealPlan = async (req, res) => {
                    'meals.Date': day
                   }
     try{
-        const result = await MealPlan.updateOne(query, {$set: {'meals.$.Meal': meal}});
+        const result = await MealPlan.updateOne(query, 
+                                {
+                                 $set: {'meals.$.Meal': meal},  
+                                },                          
+                            );
         console.log(result);
     } catch (error){
-        console.error("Error While updating meal plans: ", error.message);
+        const newMealObject = {
+            Date: day,
+            Meal: meal
+        }
+
+        const result = await MealPlan.updateOne(
+        { userID: user },
+        { $push: { meals: newMealObject } }
+        );
     }
 
 }
