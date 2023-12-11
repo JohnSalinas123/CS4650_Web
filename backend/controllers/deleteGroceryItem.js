@@ -1,4 +1,4 @@
-import GroceryItem from "../models/groceryItemModel.js"
+import GroceryItem from "../models/groceryListModel.js"
 export const deleteGroceryItem = async (req, res) => {
     try {
         const { userId, ingredientId } = req.params;

@@ -1,4 +1,4 @@
-import GroceryItem from "../models/groceryItemModel.js";
+import GroceryItem from "../models/groceryListModel.js";
 
 export const updateGroceryItem = async (req, res) => {
     // Assume the request body contains { ingredient_id, quantity }

@@ -1,42 +1,33 @@
-/*
-const testGroceryItem = {
-    "_id": "ObjectId('65580c9f0b88fdd372ee7513')",
-    "user_id": 1,
-    "active": true,
-    "ingredients": [
-      {
-        "ingredient_id": 1,
-        "name": "Burger Patty",
-        "quantity": 2
-      },
-      {
-        "ingredient_id": 2,
-        "name": "Cheddar Cheese",
-        "quantity": 2
-      }
-    ]
-};
- */ 
-
-
-/*replace   .json(testGroceryItems)*/
-
+import GroceryList from "../models/groceryListModel.js";
 import GroceryItem from "../models/groceryItemModel.js";
-import mongoose from "mongoose";
 
 
 export const getGroceryItems = async (req, res) => {
+  console.log("Getting grocery items")
+
     try {
         const userId = req.params.userId; // Directly use the userId as a string
+        console.log(userId)
 
-        // check what query looks like
-        console.log('UserID:', userId);
-        console.log('Query:', GroceryItem.find({ user_id: userId }).toString());
+        let groceryList = await GroceryList.findOne({ user_id: userId });
 
-        const groceryItems = await GroceryItem.find({ user_id: userId });
-        console.log(groceryItems);// check what is returned
+        if (!groceryList) {
+            const newGroceryItem = new GroceryList({
+                user_id: userId,
+                active:true,
+                ingredients: []
+            });
+
+            groceryList = newGroceryItem
+        }
+
+        const groceryItems = groceryList.ingredients;
+        console.log(groceryList)
+        console.log(groceryItems)
+        
         res.status(200).json(groceryItems);
     } catch (error) {
+        console.log(error)
         res.status(400).json({ message: error.message });
     }
 };
