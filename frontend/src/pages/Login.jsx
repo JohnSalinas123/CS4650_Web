@@ -5,47 +5,28 @@ import axios from 'axios';
 import '../styles/login.css';
 
 
-export const Login = () => {
+export const Login = ( {setLoginState }) => {
 	// user credentials
 	const [username, setUserName] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirm, setConfirm] = useState('');
-	const [userIDToken, setUserIDToken] = useState()
 
 	// alert message
 	const [alert, setAlert] = useState('');
 
 	useEffect(() => {
 		// check if user is logged in
-		checkIfUserLoggedIn();
+		if (localStorage.getItem('id')) {
+			console.log("LOGGING OUT")
+			localStorage.removeItem('id')
+			setLoginState(false)
+		} 
 
 	}, [])
 
 	// utils
 	const navigate = useNavigate();
 	const [loginMode, setLoginMode] = useState(true);
-
-	if (userIDToken) {
-		navigate('/home', {
-            replace: false,
-            state: {
-                id: userIDToken,
-                username: username,
-            },
-        });
-	}
-
-	const checkIfUserLoggedIn = () => {
-		const loggedInId = localStorage.getItem("id");
-		const loggedInUsername = localStorage.getItem('username')
-		console.dir(loggedInData)
-		if (loggedInData) {
-			const foundUser = loggedInData;
-			setUserIDToken(foundUser);
-		}
-
-
-	} 
 
 	// toggle between login/signup
 	const toggleMode = () => {
@@ -83,6 +64,8 @@ export const Login = () => {
 		localStorage.setItem('username', data.username)
 		console.log(data)
 
+		setLoginState(true)
+
         navigate('/home', {
             replace: false,
             state: {
@@ -99,7 +82,9 @@ export const Login = () => {
             password: password,
         });
 
-        navigate('/', {
+		setLoginButtonMode(true)
+
+        navigate('/home', {
             replace: false,
             state: {
                 id: data.id,
