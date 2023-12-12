@@ -7,20 +7,72 @@ import { Ingredients } from './pages/Ingredients';
 import { Recipes } from './pages/Recipes';
 import { MealPlans } from './pages/MealPlans';
 import './styles/general.css';
+import React, { useRef, useEffect, useState } from 'react';
+import { Navigate } from "react-router-dom";
 
 
 export function App() {
+
+	const [loginState, setLoginState] = useState(false);
+
+	
+	const RouteGuard = ({children}) => {
+
+		if (!loginState) {
+			return <Navigate to={"/"} replace />
+		}
+		
+		return children;
+	}
+
+
 	return (
 		<div id='root-div'>
-			<Navigation />
-
+			<Navigation loginState={loginState}/>
+		
 			<Routes>
-				<Route path='/home' element={<Home />}></Route>
-				<Route path='/' element={<Login />}></Route>
-				<Route path='/grocery' element={<Grocery />}></Route>
-				<Route path='/ingredients' element={<Ingredients />}></Route>
-				<Route path='/recipes' element={<Recipes />}></Route>
-				<Route path='/mealplans' element={<MealPlans />}></Route>
+				<Route path='/' element={<Login setLoginState={setLoginState} />}></Route>
+				<Route 
+					path='/home' 
+					element={
+						<RouteGuard>
+							<Home />
+						</RouteGuard>
+					}>
+				</Route>
+				<Route 
+					path='/grocery' 
+					element={
+						<RouteGuard>
+							<Grocery />
+						</RouteGuard>
+					}>		
+				</Route>
+				<Route 
+					path='/ingredients' 
+					element={
+						<RouteGuard>
+							<Ingredients />
+						</RouteGuard>
+					}>	
+				</Route>
+
+				<Route 
+					path='/recipes' 
+					element={
+						<RouteGuard>
+							<Recipes />
+						</RouteGuard>
+					}>
+				</Route>
+				<Route 
+					path='/mealplans' 
+					element={
+						<RouteGuard>
+							<MealPlans />
+						</RouteGuard>
+					}>
+				</Route>
 
 			</Routes>
 		</div>

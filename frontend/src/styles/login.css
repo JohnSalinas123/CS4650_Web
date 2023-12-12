@@ -1,13 +1,4 @@
-:root {
-	--carrot_orange: #F49D37;
-	--lavender_blush: #E0D8DE;
-	--emerald: #06D6A0;
-	--olivine: #A1C181;
-	--van-dyke: #523F38;
-	--tangerine: #E9820C;
-	--tigers-eye: #AE6109;
-	--seal-brown: #4E2B04;
-}
+
 
 .login-background {
 	height: calc(100vh - 68.5px);
@@ -26,5 +17,5 @@
 
 .login-background > form {
 	background-color: white;
-    border: 2px solid var(--carrot_orange);
+    border: 2px solid #47b115 ;
 }
