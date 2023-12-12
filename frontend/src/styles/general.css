@@ -14,16 +14,7 @@ body {
 	width: 100%;
 }
 
-:root {
-	--carrot_orange: #F49D37;
-	--lavender_blush: #E0D8DE;
-	--emerald: #06D6A0;
-	--olivine: #A1C181;
-	--van-dyke: #523F38;
-	--tangerine: #E9820C;
-	--tigers-eye: #AE6109;
-	--seal-brown: #4E2B04;
-}
+
 
 #root {
 	width: 100%;
@@ -53,8 +44,8 @@ body {
 }
 
 #navElement {
-	border-color: var(--seal-brown) !important;
-	background-color: var(--carrot_orange) !important;
+	border-color: #47b115 !important;
+	background-color: rgba(70, 177, 21, 0.2) !important; 
 }
 
 #addEventIcon {
