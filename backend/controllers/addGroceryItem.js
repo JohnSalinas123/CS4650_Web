@@ -14,15 +14,6 @@ export const addGroceryItem = async (req, res) => {
 
         console.log(usersGroceryList)
 
-        if (!usersGroceryList) {
-            // create a grocery list for the user and initialize with new grocery item
-            const newGroceryList = await GroceryList.create({
-                user_id: user_id,
-                ingredients: [newGroceryItem]
-            });
-            usersGroceryList = newGroceryList
-        }
-
         // Add the new ingredient to the ingredients array
         usersGroceryList.ingredients.push(newGroceryItem);
 

@@ -46,7 +46,21 @@ export const createUser = async (req, res) => {
 				res.status(400).json({ message: 'Failed to create user!' });
 			}
 
-			console.log('User created!');
+			console.log(`New user ${newUser._id} created!`);
+			
+			// create empty grocery list for new user
+			const newGroceryList = await GroceryList.create({
+                user_id: newUser._id,
+                ingredients: []
+            });
+
+			if (!newGroceryList) {
+				res.status(400).json({message: 'Failed to create grocery list for new user!'})
+			}
+
+			console.log(`Grocery list for user ${newUser._id} created`)
+
+
 			// user created, returning user id and username
 			res.status(201).json({
 				id: newUser.id,

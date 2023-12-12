@@ -22,8 +22,8 @@ export const getGroceryItems = async (req, res) => {
         }
 
         const groceryItems = groceryList.ingredients;
-        console.log(groceryList)
-        console.log(groceryItems)
+        //console.log(groceryList)
+        //console.log(groceryItems)
         
         res.status(200).json(groceryItems);
     } catch (error) {
