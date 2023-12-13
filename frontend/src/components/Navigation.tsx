@@ -7,7 +7,21 @@ import '../styles/general.css'
 import { Login } from '../pages/Login';
 
 
-export const Navigation = ( {loginState }) => {
+
+
+export const Navigation = ( {loginState, setLoginState }) => {
+
+    const handleLogout = () => {
+
+        if (loginState) {
+            console.log("LOGGING OUT")
+            localStorage.removeItem('Id')
+            localStorage.removeItem('username')
+            setLoginState(false)
+        }
+
+
+    }
 
     return (
         
@@ -40,7 +54,7 @@ export const Navigation = ( {loginState }) => {
                     <Nav className="nav-font-size">
 
                         <LinkContainer to='/'>
-                            <Nav.Link>{loginState ? "SignOut" : "Login"}</Nav.Link>
+                            <Nav.Link onClick={handleLogout}>{loginState ? "SignOut" : "Login"}</Nav.Link>
                         </LinkContainer>
 
                     </Nav>

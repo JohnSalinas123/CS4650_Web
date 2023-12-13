@@ -7,13 +7,10 @@ const GroceryListSchema = new mongoose.Schema({
     },
     ingredients: [{
         name: {type: String, required: true},
-        quantity: {type: Number, required: true}
+        quantity: {type: String, required: true},
+        active: {type: Boolean, required: true}
     }]
 });
 
 
-
-
-const GroceryList = mongoose.model('GroceryList', GroceryListSchema); 
-
-export default GroceryList;
+export default mongoose.model('GroceryList', GroceryListSchema); 

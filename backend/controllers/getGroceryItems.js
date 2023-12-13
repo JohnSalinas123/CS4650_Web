@@ -1,5 +1,4 @@
 import GroceryList from "../models/groceryListModel.js";
-import GroceryItem from "../models/groceryItemModel.js";
 
 
 export const getGroceryItems = async (req, res) => {
@@ -12,15 +11,12 @@ export const getGroceryItems = async (req, res) => {
         let groceryList = await GroceryList.findOne({ user_id: userId });
 
         if (!groceryList) {
-            const newGroceryItem = new GroceryList({
-                user_id: userId,
-                active:true,
-                ingredients: []
-            });
-
-            groceryList = newGroceryItem
+            console.log("GROCERY LIST IS NULL")
         }
 
+        if (groceryList.ingredients == null) {
+            res.status(200).json({message: "grocery list is empty"})
+        }
         const groceryItems = groceryList.ingredients;
         //console.log(groceryList)
         //console.log(groceryItems)

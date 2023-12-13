@@ -16,10 +16,10 @@
   }
   
   .quantity-box {
-    width: 50px;
-    text-align: center;
+    min-width: 100px;
     border: 1px solid #ddd;
     border-radius: 4px;
+    margin-left: 20px;
   }
   
   .grocery-item ul {

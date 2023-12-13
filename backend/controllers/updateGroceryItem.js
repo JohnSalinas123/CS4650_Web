@@ -1,19 +1,18 @@
-import GroceryItem from "../models/groceryListModel.js";
+import GroceryList from "../models/groceryListModel.js";
 
 export const updateGroceryItem = async (req, res) => {
     // Assume the request body contains { ingredient_id, quantity }
-    const { userId } = req.params;
-    const { ingredient_id, quantity } = req.body;
+    const { user_id, item_id, active } = req.body
 
     try {
         // Find the GroceryItem document by userId and update the specific ingredient
-        const groceryItem = await GroceryItem.findOneAndUpdate(
+        const groceryItem = await GroceryList.findOneAndUpdate(
             { 
-                user_id: userId, 
-                'ingredients.ingredient_id': ingredient_id 
+                user_id: user_id, 
+                "ingredients._id" : item_id
             },
             { 
-                $set: { 'ingredients.$.quantity': quantity }
+                $set: { 'ingredients.$.active': active }
             },
             { new: true } // Return the updated document
         );
@@ -22,8 +21,10 @@ export const updateGroceryItem = async (req, res) => {
             return res.status(404).json({ message: "Grocery item not found or ingredient not found." });
         }
 
-        console.log("Updated GroceryItem ingredient quantity!");
-        res.status(200).json(groceryItem);
+        console.log("Updated GroceryItem ingredient active state!");
+        res.status(200).json({
+            active: active
+        });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

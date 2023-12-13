@@ -1,4 +1,5 @@
 import User from '../models/userModel.js';
+import GroceryList from '../models/groceryListModel.js';
 
 import bcrypt from 'bcrypt'
 

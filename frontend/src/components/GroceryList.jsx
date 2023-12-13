@@ -6,6 +6,8 @@ import Col from "react-bootstrap/Col"
 import Pagination from 'react-bootstrap/Pagination'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form';
+import { Checkbox, Radio, Switch } from 'pretty-checkbox-react';
+import '@djthoms/pretty-checkbox';
 
 const GroceryList = () => {
   const [groceryItems, setGroceryItems] = useState([]);
@@ -41,6 +43,7 @@ const GroceryList = () => {
     }
   };
 
+  /*
   const updateGroceryList = async (itemId, ingredientId, newQuantity) => {
     console.log(groceryItems)
     try {
@@ -69,6 +72,7 @@ const GroceryList = () => {
       console.error('Error updating grocery list:', error);
     }
   };
+  */
 
   const handleQuantityChange = (itemId, itemName, change) => {
     console.log(groceryItems)
@@ -120,21 +124,15 @@ const GroceryList = () => {
 
 	}; 
 
-  /*
-  const renderGroceryItems = () => {
-    return groceryItems.map((groceryItem, index))
-      
-  }
-  */
+  const handleAddGroceryItem = async () => {
 
-  const handleAddGroceryItem = () => {
-
-    const { data } = axios.post('api/user/grocery', 
+    const { data } = await axios.post('api/user/grocery', 
       {
         user_id: localStorage.getItem("Id"),
         newGroceryItem: {
           name: newGroceryItemName,
-          quantity: newGroceryItemQuantity
+          quantity: newGroceryItemQuantity,
+          active: false,
         }
       });
 
@@ -143,12 +141,55 @@ const GroceryList = () => {
       setGroceryItems((prevGroceryItem) => [
         ...prevGroceryItem,
         {
-          name: newGroceryItemName,
-          quanity: newGroceryItemQuantity
+          _id: data._id,
+          name: data.name,
+          quantity: data.quantity,
+          active: false,
         }
       ])
 
       console.log("NEW GROCERY ITEM CREATED")
+
+  }
+
+  const handleCheckClick =  async (ingredientID, ingredientActive) => {
+    console.log(`Checkbox was ${ingredientActive}, attempting to change to ${!ingredientActive}`)
+    try {
+
+      const { data } = await axios.put('/api/user/grocery', {
+          user_id: localStorage.getItem('Id'),
+          item_id: ingredientID,
+          active: !ingredientActive,
+      })
+
+      console.log("CHECKBOX UPDATE DATA")
+      console.log(data)
+
+      setGroceryItems((prevGroceryItems) => 
+        prevGroceryItems.map((ingredient) => 
+          ingredient._id === ingredientID ? {
+            ...ingredient, active: data.active } : ingredient
+        )
+      );
+
+      console.log(groceryItems)
+
+
+    } catch (error) {
+        console.log("Error changing state of ingredient checkbox")
+    }
+    
+    console.log(ingredientActive)
+
+  }
+
+  const handleClearGroceryItems = async () => {
+
+    console.log("CLEARING GROCERY LIST")
+
+    const {data} = await axios.delete(`/api/user/grocery/${localStorage.getItem('Id')}`)
+
+    setGroceryItems(data.ingredients)
 
   }
 
@@ -160,10 +201,10 @@ const GroceryList = () => {
 				<Col xs lg="2">
 				</Col>
 				<Col md="auto">
-					<h2 >Recipe List</h2>
+					<h2 >Grocery List</h2>
 				</Col>
 				<Col xs lg="2">
-					<Button className="grocery-list-clear-button">
+					<Button className="grocery-list-clear-button" onClick={handleClearGroceryItems}>
 						Clear
 					</Button>
 				</Col>
@@ -184,7 +225,7 @@ const GroceryList = () => {
             <Form.Group controlId='ingredientQuantity'>
                     <Form.Label> Quantity </Form.Label>
                     <Form.Control 
-                        placeholder='Ex: 5' 
+                        placeholder='Ex: 5 lb' 
                         onChange={saveInput}/>
                 </Form.Group>
             </Col>
@@ -200,12 +241,19 @@ const GroceryList = () => {
 
           <ul>
             {groceryItems.map((ingredient) => (
-              <li key={ingredient.ingredient_id} className="ingredient-item">
-                {ingredient.name}
-                <button onClick={() => handleQuantityChange(ingredient._id, ingredient.name, -1)}>-</button>
-                <span className="quantity-box">{ingredient.quantity}</span>
-                <button onClick={() => handleQuantityChange(ingredient._id, ingredient.name, 1)}>+</button>
-              </li>
+              <Row key={ingredient._id}>
+                  <Col className="text-center">
+                    <p>{ingredient.name}</p>
+                  </Col>
+                  <Col className="text-center">
+                    <p className="quantity-box">  {ingredient.quantity}</p>
+                  </Col>
+                  <Col>
+                    <Checkbox bigger shape="round" variant="fill" defaultChecked={ingredient.active} onChange={() => handleCheckClick(ingredient._id, ingredient.active)} color={"success"}>
+                    </Checkbox>
+                  </Col>
+                  
+              </Row>
             ))}
           </ul>
         </div>

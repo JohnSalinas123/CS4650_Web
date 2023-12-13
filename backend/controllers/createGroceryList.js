@@ -1,4 +1,3 @@
-import GroceryItem from "../models/groceryItemModel.js";
 import GroceryList from "../models/groceryListModel.js";
 
 export const createGroceryList = async (req, res) => {

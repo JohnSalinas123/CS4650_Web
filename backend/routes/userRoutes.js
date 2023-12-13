@@ -8,6 +8,7 @@ import { getGroceryItems } from '../controllers/getGroceryItems.js';
 import { deleteGroceryItem } from '../controllers/deleteGroceryItem.js'; 
 import { addGroceryItem } from '../controllers/addGroceryItem.js';
 import { updateGroceryItem } from '../controllers/updateGroceryItem.js';
+import { clearGroceryList } from '../controllers/clearGroceryList.js';
 
 
 const router = express.Router();
@@ -21,17 +22,17 @@ router.post('/login', loginUser);
 // post: add grocery item to specific user's grocery list
 router.post('/grocery', addGroceryItem)
 
-// put: update the quantity of an item in a user's grocery list
+// put: update the active state of an item in a user's grocery list
 router.put('/grocery', updateGroceryItem);
 
 //get: grocery items related to users object _Id
 router.get('/grocery/:userId', getGroceryItems);
 
-// post: creating a new grocery item
-router.post('/grocery/new', createGroceryList);
-
 // delete: deleting a certain ingredient in a user's grocery list;
 router.delete('/grocery/:userId/ingredient/:ingredientId', deleteGroceryItem);
+
+// delete: clear a user's grocery list
+router.delete('/grocery/:userId', clearGroceryList)
 
 
 // get: retrieve user meal plans
