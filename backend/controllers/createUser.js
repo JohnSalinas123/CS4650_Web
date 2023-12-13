@@ -19,14 +19,11 @@ export const createUser = async (req, res) => {
 	}
 
 	// check for length of name
-	else if (username.length < 6 || username.length > 30) {
-		res.status(406).json({ message: 'Error: Username should have between 6 and 30 characters!' });
+	else if (username.length > 20) {
+		res.status(406).json({ message: 'Error: Username is too long!' });
 	}
 
-	// check for password
-	else if (password.length < 8) {
-		res.status(406).json({ message: 'Error: Password should be at least 8-character long!' });
-	} else {
+	else {
 		// check if username is already in use
 		const user = await User.findOne({ username: username });
 		if (user) {

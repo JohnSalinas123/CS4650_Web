@@ -4,9 +4,10 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { LinkContainer } from 'react-router-bootstrap';
 import '../styles/general.css'
+import { Login } from '../pages/Login';
 
 
-export const Navigation = () => {
+export const Navigation = ( {loginState }) => {
 
     return (
         
@@ -39,7 +40,7 @@ export const Navigation = () => {
                     <Nav className="nav-font-size">
 
                         <LinkContainer to='/'>
-                            <Nav.Link>Login</Nav.Link>
+                            <Nav.Link>{loginState ? "SignOut" : "Login"}</Nav.Link>
                         </LinkContainer>
 
                     </Nav>
