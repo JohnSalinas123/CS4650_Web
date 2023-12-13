@@ -1,0 +1,57 @@
+:root {
+	--carrot_orange: #F49D37;
+	--lavender_blush: #E0D8DE;
+	--emerald: #06D6A0;
+	--olivine: #A1C181;
+	--van_dyke: #523F38;
+	--tangerine: #E9820C;
+	--tigers_eye: #AE6109;
+	--seal_brown: #4E2B04;
+    --orange_web: #F4A615;
+    --xanthous: #F8C463;
+    --orange_pantone: #F66213;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 50px;
+    padding: 80px;
+  }
+
+  .item-container {
+    border-radius: 25px;
+    border: 10px solid #A1C181;
+    border-width: 5px;
+    text-align: center;
+    padding: 20px 0;
+    
+  }
+  .add-container {
+    border-radius: 25px;
+    border: 10px solid #A1C181;
+    border-width: 5px;
+    text-align: center;
+    padding: 20px 0;
+    
+    
+  }
+  .name {
+    font-family: "Copperplate", fantasy;
+    font-size: 30px;
+    color: #4E2B04;
+  }
+  .courier {
+    font-family: "Lucida Console", "Courier New", monospace;
+    color:#523F38;
+  }
+
+  .end-prompt {
+    text-align: center;
+  }
+
+  .add{
+    position:absolute;
+    right: 50px;
+    top: 100px;
+  }
