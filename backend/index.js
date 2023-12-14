@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/user', userRoutes)
 app.use('/api/ingredients', ingredientRoutes)
-//app.use('/api/recipes', recipeRoutes)
+app.use('/api/recipes', recipeRoutes)
 
 app.listen(port, () => {
     console.log(`Server is running at port ${port}`)

@@ -1,11 +1,16 @@
 
-testRecipe = {
-    "name": "Burger",
-    "description" : "This is a burger recipe",
-    "ingredients": ["beef_patty", "cheddar_cheese", "lettuce"]
-}
+import Recipe from "../models/recipeModel.js";
+
 
 export const getRecipes = async (req, res) => {
-	
-		res.status(200).json(testRecipe);
+    const allRecipes = await Recipe.find();
+
+    if (!allRecipes.length) {
+        res.status(400).json()
+    } else {
+        console.log("Got Recipes!")
+        res.status(200).json(allRecipes);
+    }
+
 };
+
