@@ -4,6 +4,8 @@ import bcrypt from 'bcrypt'
 export const loginUser = async (req, res) => {
 	const { username, password } = req.body;
 
+	console.log(`Attempt to login by ${username}`)
+
 	const user = await User.findOne({ username: username });
 	if (!user || user.username !== username) {
 		res.status(406).json({ message: 'Error: Username does not exist!' });

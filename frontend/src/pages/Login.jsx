@@ -15,12 +15,6 @@ export const Login = ( {setLoginState }) => {
 	const [alert, setAlert] = useState('');
 
 	useEffect(() => {
-		// check if user is logged in
-		if (localStorage.getItem('id')) {
-			console.log("LOGGING OUT")
-			localStorage.removeItem('id')
-			setLoginState(false)
-		} 
 
 	}, [])
 
@@ -60,9 +54,13 @@ export const Login = ( {setLoginState }) => {
             password: password,
         });
 
-		localStorage.setItem('id', data.id)
-		localStorage.setItem('username', data.username)
-		console.log(data)
+
+			localStorage.setItem('Id', data.id)
+			localStorage.setItem('username', data.username)
+			console.log(data)
+
+		setLoginState(true)
+
 
 		setLoginState(true)
 
@@ -82,7 +80,11 @@ export const Login = ( {setLoginState }) => {
             password: password,
         });
 
-		setLoginButtonMode(true)
+		localStorage.setItem('Id', data.id)
+		localStorage.setItem('username', data.username)
+
+		setLoginState(true)
+
 
         navigate('/home', {
             replace: false,
