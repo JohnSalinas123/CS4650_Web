@@ -16,7 +16,6 @@ export const Login = ( {setLoginState }) => {
 
 	useEffect(() => {
 
-
 	}, [])
 
 	// utils
@@ -55,9 +54,13 @@ export const Login = ( {setLoginState }) => {
             password: password,
         });
 
+
 			localStorage.setItem('Id', data.id)
 			localStorage.setItem('username', data.username)
 			console.log(data)
+
+		setLoginState(true)
+
 
 		setLoginState(true)
 
@@ -81,6 +84,7 @@ export const Login = ( {setLoginState }) => {
 		localStorage.setItem('username', data.username)
 
 		setLoginState(true)
+
 
         navigate('/home', {
             replace: false,

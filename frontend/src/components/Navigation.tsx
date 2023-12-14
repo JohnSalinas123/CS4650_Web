@@ -7,8 +7,6 @@ import '../styles/general.css'
 import { Login } from '../pages/Login';
 
 
-
-
 export const Navigation = ( {loginState, setLoginState }) => {
 
     const handleLogout = () => {
@@ -54,7 +52,9 @@ export const Navigation = ( {loginState, setLoginState }) => {
                     <Nav className="nav-font-size">
 
                         <LinkContainer to='/'>
+
                             <Nav.Link onClick={handleLogout}>{loginState ? "SignOut" : "Login"}</Nav.Link>
+
                         </LinkContainer>
 
                     </Nav>

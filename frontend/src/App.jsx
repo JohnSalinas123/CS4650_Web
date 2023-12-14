@@ -15,6 +15,7 @@ export function App() {
 
 	const [loginState, setLoginState] = useState(localStorage.getItem("Id") ? true : false);
 
+
 	
 	const RouteGuard = ({children}) => {
 
@@ -28,8 +29,9 @@ export function App() {
 
 	return (
 		<div id='root-div'>
+
 			<Navigation loginState={loginState} setLoginState={setLoginState}/>
-		
+
 			<Routes>
 				<Route path='/' element={<Login setLoginState={setLoginState} />}></Route>
 				<Route 
