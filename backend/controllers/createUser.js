@@ -68,31 +68,31 @@ export const createUser = async (req, res) => {
 				meals: [
 					{
 						"Date":"Sunday",
-						"Meal":""
+						"Meal":"Empty"
 					},
 					{
 						"Date":"Monday",
-						"Meal":""
+						"Meal":"Empty"
 					},
 					{
 						"Date":"Tuesday",
-						"Meal":""
+						"Meal":"Empty"
 					},
 					{
 						"Date":"Wednesday",
-						"Meal":""
+						"Meal":"Empty"
 					},
 					{
 						"Date":"Thursday",
-						"Meal":""
+						"Meal":"Empty"
 					},
 					{
 						"Date":"Friday",
-						"Meal":""
+						"Meal":"Empty"
 					},
 					{
 						"Date":"Saturday",
-						"Meal":""
+						"Meal":"Empty"
 					}
 				]
 			})
