@@ -26,9 +26,9 @@ export const Navigation = ( {loginState, setLoginState }) => {
         
         <Navbar bg="light" expand="lg" id="navElement" className="border-bottom border-2 fixed-top">
             <Container >
-                <LinkContainer to='/home' >
-                    <Navbar.Brand href="#home" className="brand-font-size">PantryPal</Navbar.Brand>
-                </LinkContainer>
+                
+                <Navbar.Brand href="#home" className="brand-font-size">PantryPal</Navbar.Brand>
+                
                 
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

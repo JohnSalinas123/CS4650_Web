@@ -61,7 +61,7 @@ export const Login = ( {setLoginState }) => {
 
 		setLoginState(true)
 
-        navigate('/home', {
+        navigate('/grocery', {
             replace: false,
             state: {
                 id: data.id,
@@ -84,7 +84,7 @@ export const Login = ( {setLoginState }) => {
 		setLoginState(true)
 
 
-        navigate('/home', {
+        navigate('/grocery', {
             replace: false,
             state: {
                 id: data.id,
