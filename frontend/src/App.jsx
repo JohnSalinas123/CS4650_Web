@@ -68,7 +68,7 @@ export function App() {
 					}>
 				</Route>
 				<Route 
-					path='/mealplans' 
+					path='/meals' 
 					element={
 						<RouteGuard>
 							<MealPlans />

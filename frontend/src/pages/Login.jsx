@@ -61,9 +61,6 @@ export const Login = ( {setLoginState }) => {
 
 		setLoginState(true)
 
-
-		setLoginState(true)
-
         navigate('/home', {
             replace: false,
             state: {
@@ -82,6 +79,7 @@ export const Login = ( {setLoginState }) => {
 
 		localStorage.setItem('Id', data.id)
 		localStorage.setItem('username', data.username)
+		console.log(data)
 
 		setLoginState(true)
 
