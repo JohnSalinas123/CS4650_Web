@@ -74,15 +74,16 @@ export const MealPlansList = () => {
 		setShowModal(!showModal);
 	}
 	const handleFormSubmit = async (newMeal) => {
+
 		setNewMealData({ date: selectDate, meal: newMeal });
+		updateMealsData(selectDate, newMeal);
+
 		const { data } = await axios.post('api/user/createMeal',
 		{
 			user: userUpdate,
 			day: selectDate,
 			meal: newMeal
 		});
-
-		updateMealsData(selectDate, newMeal);
 		
 	}
 	useEffect(() => {
@@ -110,9 +111,7 @@ export const MealPlansList = () => {
 				})
 			});
 
-			mealsData.forEach((meal_) =>{
-				console.log(meal_)
-			})
+
 		} catch (err) {
 			console.error(err);
 		}
