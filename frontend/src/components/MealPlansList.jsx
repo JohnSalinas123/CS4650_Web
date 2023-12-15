@@ -125,7 +125,7 @@ export const MealPlansList = () => {
 					<Modal.Title>{selectDate}'s New Meal Will Be ...</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<MealPlanForm onSubmit={handleFormSubmit} />
+					<MealPlanForm onSubmit={handleFormSubmit} handleClose={() => setShowModal(false)}/>
 				</Modal.Body>
 			</Modal>
 			{

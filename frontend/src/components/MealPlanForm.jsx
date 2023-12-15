@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Button} from 'react-bootstrap';
 
-export const MealPlanForm = ( {onSubmit}) => {
+export const MealPlanForm = ( {onSubmit, handleClose}) => {
     const [inputText, setInputText] = useState('');
     const handleInputChange = (event) => {
         setInputText(event.target.value);
@@ -10,6 +10,7 @@ export const MealPlanForm = ( {onSubmit}) => {
     const handleSubmit = () => {
         onSubmit(inputText);
         setInputText('');
+        handleClose();
     };
 
     return (
