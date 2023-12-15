@@ -1,6 +1,8 @@
 import User from '../models/userModel.js';
 import GroceryList from '../models/groceryListModel.js';
 
+import MealPlan from '../models/mealPlanModel.js';
+
 import bcrypt from 'bcrypt'
 
 export const createUser = async (req, res) => {
@@ -59,6 +61,44 @@ export const createUser = async (req, res) => {
 			console.log(`Grocery list for user ${newUser._id} created`)
 
 
+			console.log('User created!');
+
+			const newMealPlan = await MealPlan.create({
+				userID: newUser.username,
+				meals: [
+					{
+						"Date":"Sunday",
+						"Meal":""
+					},
+					{
+						"Date":"Monday",
+						"Meal":""
+					},
+					{
+						"Date":"Tuesday",
+						"Meal":""
+					},
+					{
+						"Date":"Wednesday",
+						"Meal":""
+					},
+					{
+						"Date":"Thursday",
+						"Meal":""
+					},
+					{
+						"Date":"Friday",
+						"Meal":""
+					},
+					{
+						"Date":"Saturday",
+						"Meal":""
+					}
+				]
+			})
+			if (!newMealPlan){
+				res.status(400).json({message: "Failed to create meal plan for new user"})
+			}
 			// user created, returning user id and username
 			res.status(201).json({
 				id: newUser.id,

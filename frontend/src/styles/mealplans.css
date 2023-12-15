@@ -1,0 +1,41 @@
+
+.events {
+    position: relative;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.events .fade {
+    opacity: 1.0;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.events:hover .middle{
+    opacity: 1;
+}
+.events:hover .fade{
+    opacity: 0.3;
+}
+
+.middle-addition {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+
